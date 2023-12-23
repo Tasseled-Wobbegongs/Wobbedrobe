@@ -1,42 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-const defaultUser = {
-  username: 'Chris',
-  wardrobe: {
-    tops: [
-      {
-        id: 0,
-        color: 'white',
-        category: 'hoodie',
-        material: 'cotton',
-        style: 'sporty',
-      },
-    ],
-    bottoms: [
-      {
-        id: 0,
-        color: 'blue',
-        category: 'sweatpants',
-        material: 'cotton',
-        style: 'sporty',
-      },
-    ],
-    overall: [],
-    shoes: [
-      {
-        id: 0,
-        color: 'white',
-        category: 'sneakers',
-        heals: '2cm',
-      },
-    ],
-  },
-  lookbook: [{ top: 0, bottom: 0, shoes: 0 }],
-};
+import defaultUsers from '../../fakeData/user.json';
 
 const initialState = {
   page: 'HOME',
-  user: defaultUser,
+  user: null,
 };
 
 export const statusSlice = createSlice({
@@ -46,9 +13,15 @@ export const statusSlice = createSlice({
     goToPage: (state, action) => {
       state.page = action.payload;
     },
+    userLogin: (state, action) => {
+      state.user = action.payload;
+    },
+    userLogout: (state, action) => {
+      state.user = null;
+    },
   },
 });
 
-export const { goToPage } = statusSlice.actions;
+export const { goToPage, userLogin, userLogout } = statusSlice.actions;
 
 export default statusSlice.reducer;
