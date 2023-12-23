@@ -15,7 +15,7 @@ userController.createUser = async(req, res, next) => {
         const salt = 10;
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // insert the new user into the database
+        // insert the new user into the database and return user_id and username
         const queryText = 'INSERT INTO users (username, password_hash) VALUES ($1, $2) RETURNING user_id, username;';
         const queryParams = [username, hashedPassword];
         const { rows } = await db.query(queryText, queryParams);
