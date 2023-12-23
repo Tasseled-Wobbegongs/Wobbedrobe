@@ -133,7 +133,15 @@
         }
       ]
     },
-    "outfit": []
+    "outfit": [
+      {
+        "outfit_id": 0,
+        "top_id": 4,
+        "bottom_id": 2,
+        "overall_id": null,
+        "imageUrl": "/images/fakeOutfit0.png"
+      }
+    ]
   },
   "euny": {
     "user_id": 3,

@@ -6,7 +6,9 @@ import UserWobbeDrobe from './components/pages/UserWobbedrobe';
 import AddToWobbeDrobe from './components/pages/AddToWobbedrobe';
 import AddOOTD from './components/pages/AddOOTD';
 import LogInSignUpBox from './components/pages/LogInSignUpBox';
+import GetInspired from './components/pages/GetInspired';
 import '../src/styles/Login.scss';
+import Lookbook from './components/pages/Lookbook';
 
 function App() {
   const page = useSelector((state) => state.status.page);
@@ -20,6 +22,8 @@ function App() {
       {page === 'ADD_TO_OOTD' && <AddOOTD />}
       {page === 'LOGIN' && <LogInSignUpBox />}
       {page === 'SIGN_UP' && <LogInSignUpBox />}
+      {page === 'GET_INSPIRED' && <GetInspired />}
+      {page === 'VIEW_LOOKBOOK' && <Lookbook />}
     </div>
   );
 }
