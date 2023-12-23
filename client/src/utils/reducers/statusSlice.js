@@ -34,7 +34,7 @@ const defaultUser = {
   lookbook: [{ top: 0, bottom: 0, shoes: 0 }],
 };
 
-const initalState = {
+const initialState = {
   page: 'HOME',
   user: defaultUser,
 };
