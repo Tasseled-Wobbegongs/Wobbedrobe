@@ -1,0 +1,15 @@
+{
+  "shoes": ["flats", "sneakers", "flippers", "boots", "heels"],
+  "top": [
+    "t-shirts",
+    "blouse",
+    "tank",
+    "sweater",
+    "hoodie",
+    "polo",
+    "bodysuit",
+    "shirt"
+  ],
+  "bottom": ["jeans", "trousers", "leggings", "sweatpants", "cargopants"],
+  "overall": ["dress, onesie, jumpsuit"]
+}

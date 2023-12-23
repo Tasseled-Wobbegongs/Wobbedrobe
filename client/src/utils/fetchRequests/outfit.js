@@ -1,4 +1,4 @@
-export function requestOOTDAdd({ body }) {
+export function requestOOTDAdd(body) {
   return fetch(`ootd/add/`, {
     method: 'POST',
     headers: {
@@ -10,7 +10,7 @@ export function requestOOTDAdd({ body }) {
     .catch((err) => console.log('App: add to OOTD: ERROR', err));
 }
 
-export function requestOOTDGet({ id }) {
+export function requestOOTDGet(id) {
   return fetch(`ootd/get/${id}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -19,7 +19,7 @@ export function requestOOTDGet({ id }) {
     .catch((err) => console.log('App: reading OOTD ', ': ERROR: ', err));
 }
 
-export function requestOOTDUpdate({ id, body }) {
+export function requestOOTDUpdate(id, body) {
   return fetch(`ootd/update/${id}`, {
     method: 'POST',
     headers: {
@@ -31,7 +31,7 @@ export function requestOOTDUpdate({ id, body }) {
     .catch((err) => console.log('App: update OOTD: ERROR', err));
 }
 
-export function requestOOTDDelete({ id }) {
+export function requestOOTDDelete(id) {
   return fetch(`OOTD/delete/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
