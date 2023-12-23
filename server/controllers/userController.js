@@ -75,3 +75,6 @@ userController.verifyUser = async(req, res, next) => {
         });
     }
 };
+
+
+module.exports = userController
