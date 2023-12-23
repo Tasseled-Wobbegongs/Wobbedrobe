@@ -31,7 +31,6 @@ module.exports = {
       ],
     },
     plugins: [
-      // while loaders are used to transform certain types of modules, plugins can be leveraged to perform a wider range of tasks like bundle optimization, asset management, and injection of environment variables.
       new HtmlWebpackPlugin({
         // generates an HTML file for your application and automatically injects all your generated bundles into this file
         title: "Development",
