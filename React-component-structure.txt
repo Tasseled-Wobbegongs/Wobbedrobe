@@ -1,0 +1,33 @@
+App
+|-- Welcome                           #HOME
+|   |-- Header(Welcome to your Wobbedrobe)
+|   |-- Button(Add to Wobbedrobe)     #Take user to WobbedrobeItemCreator
+|   |-- Button(View Wobbedrobe)       #Take user to Wobbedrobe
+|   |-- Button(Log OOTD)              #Take user to OOTDCreator
+|   |-- Button(Get Inspired)          #Take user to OOTDGenerator
+|   |-- Button(View Lookbook)         #Take user to Lookbook
+|
+|-- UserLoginOrSignUp   
+|
+|-- WobbedrobeItemCreator
+|   |-- Header(Choose a Category to Add)
+|   |-- Button(Top)     
+|   |-- Button(Bottom)       
+|   |-- Button(Overall)             
+|   |-- Button(Shoes)         
+|   |-- Button(Assecory)
+|
+|   |-- ItemCreator (rendered based on user choice of Category) 
+|     
+|-- Wobbedrobe    
+|   |-- WobbedrobeItems
+|
+|-- OOTDCreator
+|   |-- OOTDForm
+|
+|-- OOTDGenerator
+|   |-- RandomlyGeneratedOutfit
+|   |-- AiGeneratedImage
+|
+|-- Lookbook  
+|   |-- PreviouslySavedOutfits
