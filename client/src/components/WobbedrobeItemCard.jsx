@@ -9,6 +9,7 @@ const emoji = {
 
 export default function WobbedrobeItemCard({ itemType, item }) {
   const { color, category, style, material } = item;
+  console.log(color);
   // console.log(item);
   return (
     <div
@@ -26,7 +27,23 @@ export default function WobbedrobeItemCard({ itemType, item }) {
     >
       <h3>{emoji[itemType]}</h3>
       <LabelText label='Category' text={category} />
-      <LabelText label='Color' text={color} />
+      <div
+        style={{
+          display: 'flex',
+          gap: '5px',
+          alignItems: 'center',
+        }}
+      >
+        <strong>Color: </strong>
+        <div
+          style={{
+            backgroundColor: color,
+            height: '20px',
+            width: '50px',
+            border: 'solid 1px black',
+          }}
+        ></div>
+      </div>
       {itemType !== 'shoes' && <LabelText label='Material' text={material} />}
       <LabelText label='Style' text={style} />
     </div>
