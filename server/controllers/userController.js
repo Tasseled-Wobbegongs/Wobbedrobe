@@ -37,3 +37,5 @@ userController.createUser = async(req, res, next) => {
         });
     }
 };
+
+module.exports = userController
