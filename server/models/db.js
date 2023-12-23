@@ -1,9 +1,8 @@
 const { Pool } = require('pg');
 
-const PG_URI = process.env.PG_URI;
 
-const pool = new Pool({
-  connectionString: PG_URI,
+const pool = new Pool({ 
+    connectionString: process.env.PG_URI
 });
 
 // We export an object that contains a property called query,

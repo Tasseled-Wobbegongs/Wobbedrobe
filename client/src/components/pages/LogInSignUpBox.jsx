@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import defaultUsers from '../../fakeData/user.json';
 import React, { useState } from 'react';
 import { goToPage, userLogin } from '../../utils/reducers/statusSlice';
+import '../../styles/Login.scss';
 
 // Page 2 & 3
 export default function LogInSignUpBox() {
@@ -30,14 +31,16 @@ export default function LogInSignUpBox() {
         }
       }}
     >
-      <form>
-        <label>Username: </label>
-        <input name='username' type='text' />
-        <label>Password: </label>
-        <input name='password' type='password' />
-        <input type='submit' value={page === 'LOGIN' ? 'login' : 'Sign up'} />
-      </form>
-      {message && <p>{message}</p>}
+      <div className="forn-container">
+        <form>
+          <label>Username: </label>
+          <input name='username' type='text' />
+          <label>Password: </label>
+          <input name='password' type='password' />
+          <input type='submit' value={page === 'LOGIN' ? 'login' : 'Sign up'} />
+        </form>
+        {message && <p>{message}</p>}
+      </div>
     </div>
   );
 }
