@@ -6,6 +6,7 @@ import UserWobbeDrobe from './components/pages/UserWobbedrobe';
 import AddToWobbeDrobe from './components/pages/AddToWobbedrobe';
 import AddOOTD from './components/pages/AddOOTD';
 import LogInSignUpBox from './components/pages/LogInSignUpBox';
+import '../src/styles/Login.scss';
 
 function App() {
   const page = useSelector((state) => state.status.page);
