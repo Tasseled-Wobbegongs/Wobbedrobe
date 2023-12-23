@@ -10,13 +10,16 @@ app.use(express.json());
 
 
 app.post('/user/signup', userController.createUser, cookieController.setSSIDCookie, (req, res) => {
-  res.redirect('/user/login')
+  return res.status(200).json({});
 });
 
 app.get('/user/login', Controller.getWobbedrobe, (req, res) => {
   return res.status(200).json({});
 });
 
+app.delete('user/delete', (req, res) => {
+
+});
 
 // Unknown route handler
 app.use((req, res) => res.sendStatus(404));
