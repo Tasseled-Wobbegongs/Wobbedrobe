@@ -1,4 +1,4 @@
-export function requestWobbedrobeAdd({ category, body }) {
+export function requestWobbedrobeAdd(category, body) {
   return fetch(`wobbedrobe/add/${category}`, {
     method: 'POST',
     headers: {
@@ -10,7 +10,7 @@ export function requestWobbedrobeAdd({ category, body }) {
     .catch((err) => console.log('App: add to wobbedrobe: ERROR', err));
 }
 
-export function requestWobbedrobeGet({ category }) {
+export function requestWobbedrobeGet(category) {
   return fetch(`wobbedrobe/get/${category}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -21,7 +21,7 @@ export function requestWobbedrobeGet({ category }) {
     );
 }
 
-export function requestWobbedrobeUpdate({ category, id, body }) {
+export function requestWobbedrobeUpdate(category, id, body) {
   return fetch(`wobbedrobe/update/${category}/${id}`, {
     method: 'POST',
     headers: {
@@ -33,7 +33,7 @@ export function requestWobbedrobeUpdate({ category, id, body }) {
     .catch((err) => console.log('App: update wobbedrobe: ERROR', err));
 }
 
-export function requestWobbedrobeDelete({ category, id }) {
+export function requestWobbedrobeDelete(category, id) {
   return fetch(`wobbedrobe/delete/${category}/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },

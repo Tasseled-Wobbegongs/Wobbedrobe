@@ -1,5 +1,6 @@
 {
   "cathy": {
+    "user_id": 0,
     "password": "1234",
     "wardrobe": {
       "tops": [
@@ -36,6 +37,7 @@
     }
   },
   "chris": {
+    "user_id": 1,
     "password": "1234",
     "wardrobe": {
       "tops": [
@@ -72,6 +74,7 @@
     }
   },
   "claire": {
+    "user_id": 2,
     "password": "1234",
     "wardrobe": {
       "tops": [
@@ -108,6 +111,7 @@
     }
   },
   "euny": {
+    "user_id": 3,
     "password": "1234",
     "wardrobe": {
       "tops": [
