@@ -9,7 +9,7 @@ const emoji = {
 
 export default function WobbedrobeItemCard({ itemType, item }) {
   const { color, category, style, material } = item;
-  console.log(item);
+  // console.log(item);
   return (
     <div
       style={{
