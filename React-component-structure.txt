@@ -1,0 +1,29 @@
+App
+|-- Welcome                   #HOME
+|
+|-- SavedStoriesContainer     #HOME
+|   |-- SavedStoryCard
+|
+|-- GenreCardContainer        #CHOOSE_GENRE
+|   |-- ReturnHomeButton
+|   |-- GenreCard
+|
+|-- StoryBuilder              #STORY_BUILDER
+|   |-- Header
+|   |   |-- ReturnHomeButton
+|   |
+|   |-- PlotCardsContainer
+|   |   |-- PlotCard
+|   |   |   |-- h3
+|   |   |   |-- AiPlot
+|   |   |   |-- UserPlot
+|   |   |   |-- NextCardOptions   # if not Ending 
+|   |   |   |-- Ending            # if Ending Card 
+|
+|-- SavedStoryDetail          #STORY_DETAIL
+|   |-- ReturnHomeButton
+|   |-- Header
+|   |-- CreatedAt
+|   |-- DetailCardsContainer
+|   |   |-- PlotCardEditor
+|   |   |-- SavedPlotCard
