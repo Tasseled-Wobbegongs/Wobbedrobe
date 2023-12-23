@@ -3,44 +3,13 @@
     "user_id": 0,
     "password": "1234",
     "wardrobe": {
-      "tops": [
+      "top": [
         {
           "category": "sweater",
           "color": "red",
           "material": "cashmere",
           "style": "elegant"
-        }
-      ],
-      "bottoms": [
-        {
-          "category": "jeans",
-          "color": "blue",
-          "material": "denim",
-          "style": "casual"
-        }
-      ],
-      "overalls": [],
-      "shoes": [
-        {
-          "category": "slippers",
-          "color": "white",
-          "style": "casual"
-        }
-      ],
-      "outfit": [
-        {
-          "top": 0,
-          "bottom": 0,
-          "shoes": 0
-        }
-      ]
-    }
-  },
-  "chris": {
-    "user_id": 1,
-    "password": "1234",
-    "wardrobe": {
-      "tops": [
+        },
         {
           "category": "hoodie",
           "color": "white",
@@ -48,7 +17,44 @@
           "style": "casual"
         }
       ],
-      "bottoms": [
+      "bottom": [
+        {
+          "category": "jeans",
+          "color": "blue",
+          "material": "denim",
+          "style": "casual"
+        }
+      ],
+      "overall": [],
+      "shoes": [
+        {
+          "category": "slippers",
+          "color": "white",
+          "style": "casual"
+        }
+      ]
+    },
+    "outfit": [
+      {
+        "top": 0,
+        "bottom": 0,
+        "shoes": 0
+      }
+    ]
+  },
+  "chris": {
+    "user_id": 1,
+    "password": "1234",
+    "wardrobe": {
+      "top": [
+        {
+          "category": "hoodie",
+          "color": "white",
+          "material": "cotton",
+          "style": "casual"
+        }
+      ],
+      "bottom": [
         {
           "category": "sweatpants",
           "color": "blue",
@@ -56,65 +62,83 @@
           "style": "casual"
         }
       ],
-      "overalls": [],
+      "overall": [],
       "shoes": [
         {
           "category": "crocs",
           "color": "white",
           "style": "casual"
         }
-      ],
-      "outfit": [
-        {
-          "top": 0,
-          "bottom": 0,
-          "shoes": 0
-        }
       ]
-    }
+    },
+    "outfit": [
+      {
+        "top": 0,
+        "bottom": 0,
+        "shoes": 0
+      }
+    ]
   },
   "claire": {
     "user_id": 2,
     "password": "1234",
     "wardrobe": {
-      "tops": [
+      "top": [
         {
           "category": "tank",
           "color": "green",
           "material": "cotton",
           "style": "casual"
+        },
+        {
+          "category": "hoodie",
+          "color": "white",
+          "material": "cotton",
+          "style": "casual"
         }
       ],
-      "bottoms": [
+      "bottom": [
         {
           "category": "skirt",
           "color": "blue",
           "material": "cotton",
           "style": "casual"
+        },
+        {
+          "category": "trousers",
+          "color": "black",
+          "material": "cotton",
+          "style": "elegant"
         }
       ],
-      "overalls": [],
+      "overall": [
+        {
+          "category": "dress",
+          "color": "pink",
+          "style": "elegant"
+        }
+      ],
       "shoes": [
         {
           "category": "boots",
           "color": "black",
           "style": "casual"
         }
-      ],
-      "outfit": [
-        {
-          "top": 0,
-          "bottom": 0,
-          "shoes": 0
-        }
       ]
-    }
+    },
+    "outfit": [
+      {
+        "top": 0,
+        "bottom": 0,
+        "shoes": 0
+      }
+    ]
   },
   "euny": {
     "user_id": 3,
     "password": "1234",
     "wardrobe": {
-      "tops": [
+      "top": [
         {
           "category": "blouse",
           "color": "white",
@@ -122,7 +146,7 @@
           "style": "elegant"
         }
       ],
-      "bottoms": [
+      "bottom": [
         {
           "category": "pants",
           "color": "black",
@@ -130,21 +154,21 @@
           "style": "elegant"
         }
       ],
-      "overalls": [],
+      "overall": [],
       "shoes": [
         {
           "category": "flats",
           "color": "beige",
           "style": "elegant"
         }
-      ],
-      "outfit": [
-        {
-          "top": 0,
-          "bottom": 0,
-          "shoes": 0
-        }
       ]
-    }
+    },
+    "outfit": [
+      {
+        "top": 0,
+        "bottom": 0,
+        "shoes": 0
+      }
+    ]
   }
 }
