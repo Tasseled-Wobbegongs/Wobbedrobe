@@ -1,0 +1,146 @@
+{
+  "cathy": {
+    "password": "1234",
+    "wardrobe": {
+      "tops": [
+        {
+          "category": "sweater",
+          "color": "red",
+          "material": "cashmere",
+          "style": "elegant"
+        }
+      ],
+      "bottoms": [
+        {
+          "category": "jeans",
+          "color": "blue",
+          "material": "denim",
+          "style": "casual"
+        }
+      ],
+      "overalls": [],
+      "shoes": [
+        {
+          "category": "slippers",
+          "color": "white",
+          "style": "casual"
+        }
+      ],
+      "outfit": [
+        {
+          "top": 0,
+          "bottom": 0,
+          "shoes": 0
+        }
+      ]
+    }
+  },
+  "chris": {
+    "password": "1234",
+    "wardrobe": {
+      "tops": [
+        {
+          "category": "hoodie",
+          "color": "white",
+          "material": "cotton",
+          "style": "casual"
+        }
+      ],
+      "bottoms": [
+        {
+          "category": "sweatpants",
+          "color": "blue",
+          "material": "cotton",
+          "style": "casual"
+        }
+      ],
+      "overalls": [],
+      "shoes": [
+        {
+          "category": "crocs",
+          "color": "white",
+          "style": "casual"
+        }
+      ],
+      "outfit": [
+        {
+          "top": 0,
+          "bottom": 0,
+          "shoes": 0
+        }
+      ]
+    }
+  },
+  "claire": {
+    "password": "1234",
+    "wardrobe": {
+      "tops": [
+        {
+          "category": "tank",
+          "color": "green",
+          "material": "cotton",
+          "style": "casual"
+        }
+      ],
+      "bottoms": [
+        {
+          "category": "skirt",
+          "color": "blue",
+          "material": "cotton",
+          "style": "casual"
+        }
+      ],
+      "overalls": [],
+      "shoes": [
+        {
+          "category": "boots",
+          "color": "black",
+          "style": "casual"
+        }
+      ],
+      "outfit": [
+        {
+          "top": 0,
+          "bottom": 0,
+          "shoes": 0
+        }
+      ]
+    }
+  },
+  "euny": {
+    "password": "1234",
+    "wardrobe": {
+      "tops": [
+        {
+          "category": "blouse",
+          "color": "white",
+          "material": "silk",
+          "style": "elegant"
+        }
+      ],
+      "bottoms": [
+        {
+          "category": "pants",
+          "color": "black",
+          "material": "cotton",
+          "style": "elegant"
+        }
+      ],
+      "overalls": [],
+      "shoes": [
+        {
+          "category": "flats",
+          "color": "beige",
+          "style": "elegant"
+        }
+      ],
+      "outfit": [
+        {
+          "top": 0,
+          "bottom": 0,
+          "shoes": 0
+        }
+      ]
+    }
+  }
+}
