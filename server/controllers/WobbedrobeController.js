@@ -16,4 +16,4 @@ userController.deleteAccount = (req, res, next) => {
 
 
 
-mondule.exports = closet;
+module.exports = userController;
