@@ -3,148 +3,170 @@
     "user_id": 0,
     "password": "1234",
     "wardrobe": {
-      "tops": [
+      "top": [
         {
+          "top_id": 0,
           "category": "sweater",
           "color": "red",
           "material": "cashmere",
           "style": "elegant"
-        }
-      ],
-      "bottoms": [
+        },
         {
-          "category": "jeans",
-          "color": "blue",
-          "material": "denim",
-          "style": "casual"
-        }
-      ],
-      "overalls": [],
-      "shoes": [
-        {
-          "category": "slippers",
-          "color": "white",
-          "style": "casual"
-        }
-      ],
-      "outfit": [
-        {
-          "top": 0,
-          "bottom": 0,
-          "shoes": 0
-        }
-      ]
-    }
-  },
-  "chris": {
-    "user_id": 1,
-    "password": "1234",
-    "wardrobe": {
-      "tops": [
-        {
+          "top_id": 1,
           "category": "hoodie",
           "color": "white",
           "material": "cotton",
           "style": "casual"
         }
       ],
-      "bottoms": [
+      "bottom": [
         {
+          "bottom_id": 0,
+          "category": "jeans",
+          "color": "blue",
+          "material": "denim",
+          "style": "casual"
+        }
+      ],
+      "overall": [],
+      "shoes": [
+        {
+          "shoes_id": 0,
+          "category": "slippers",
+          "color": "white",
+          "style": "casual"
+        }
+      ]
+    },
+    "outfit": []
+  },
+  "chris": {
+    "user_id": 1,
+    "password": "1234",
+    "wardrobe": {
+      "top": [
+        {
+          "top_id": 2,
+          "category": "hoodie",
+          "color": "white",
+          "material": "cotton",
+          "style": "casual"
+        }
+      ],
+      "bottom": [
+        {
+          "bottom_id": 2,
           "category": "sweatpants",
           "color": "blue",
           "material": "cotton",
           "style": "casual"
         }
       ],
-      "overalls": [],
+      "overall": [],
       "shoes": [
         {
+          "shoes_id": 1,
           "category": "crocs",
           "color": "white",
           "style": "casual"
         }
-      ],
-      "outfit": [
-        {
-          "top": 0,
-          "bottom": 0,
-          "shoes": 0
-        }
       ]
-    }
+    },
+    "outfit": [
+      {
+        "top": 0,
+        "bottom": 0,
+        "shoes": 0
+      }
+    ]
   },
   "claire": {
     "user_id": 2,
     "password": "1234",
     "wardrobe": {
-      "tops": [
+      "top": [
         {
+          "top_id": 3,
           "category": "tank",
           "color": "green",
           "material": "cotton",
           "style": "casual"
-        }
-      ],
-      "bottoms": [
+        },
         {
-          "category": "skirt",
-          "color": "blue",
+          "top_id": 4,
+          "category": "hoodie",
+          "color": "white",
           "material": "cotton",
           "style": "casual"
         }
       ],
-      "overalls": [],
+      "bottom": [
+        {
+          "bottom_id": 2,
+          "category": "skirt",
+          "color": "blue",
+          "material": "cotton",
+          "style": "casual"
+        },
+        {
+          "bottom_id": 3,
+          "category": "trousers",
+          "color": "black",
+          "material": "cotton",
+          "style": "elegant"
+        }
+      ],
+      "overall": [
+        {
+          "overall_id": 0,
+          "category": "dress",
+          "color": "pink",
+          "style": "elegant"
+        }
+      ],
       "shoes": [
         {
+          "shoes_id": 2,
           "category": "boots",
           "color": "black",
           "style": "casual"
         }
-      ],
-      "outfit": [
-        {
-          "top": 0,
-          "bottom": 0,
-          "shoes": 0
-        }
       ]
-    }
+    },
+    "outfit": []
   },
   "euny": {
     "user_id": 3,
     "password": "1234",
     "wardrobe": {
-      "tops": [
+      "top": [
         {
+          "top_id": 5,
           "category": "blouse",
           "color": "white",
           "material": "silk",
           "style": "elegant"
         }
       ],
-      "bottoms": [
+      "bottom": [
         {
+          "bottom_id": 4,
           "category": "pants",
           "color": "black",
           "material": "cotton",
           "style": "elegant"
         }
       ],
-      "overalls": [],
+      "overall": [],
       "shoes": [
         {
+          "shoes_id": 3,
           "category": "flats",
           "color": "beige",
           "style": "elegant"
         }
-      ],
-      "outfit": [
-        {
-          "top": 0,
-          "bottom": 0,
-          "shoes": 0
-        }
       ]
-    }
+    },
+    "outfit": []
   }
 }
