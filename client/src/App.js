@@ -8,11 +8,11 @@ import AddOOTD from './components/pages/AddOOTD';
 import LogInSignUpBox from './components/pages/LogInSignUpBox';
 import './styles/App.scss';
 
-
 function App() {
   const page = useSelector((state) => state.status.page);
   const user = useSelector((state => state.status.user));
   console.log(page);
+  console.log('mode is', process.env.NODE_ENV);
 
   // if no user is logged in and the page is not 'LOGIN' or 'SIGN_UP' show the LANDING_PAGE
   if (!user && page === 'LANDING_PAGE') {
