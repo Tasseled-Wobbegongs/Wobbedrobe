@@ -3,12 +3,17 @@ const router = express.Router();
 
 const ootdController = require('../controllers/ootdController.js');
 
-router.post('/add', ootdController.addOOTD, (req, res) => {
-  console.log('POST /ootd/add/ route hit');
-  console.log(req.body);
-  console.log(res.locals.outfit);
-  res.status(200).json({ newOutfit: res.locals.outfit });
-});
+router.post(
+  '/add',
+  ootdController.addOOTD,
+  ootdController.getAiImage,
+  ootdController.saveAiImage,
+  ootdController.updateNewOutfitWithImageUrl,
+  (req, res) => {
+    console.log('POST /ootd/add/ route hit');
+    res.status(200).json({ newOutfit: res.locals.newOutfit });
+  }
+);
 
 router.get('/get/:id', (req, res) => {
   console.log('GET /ootd/get/:id route hit');
