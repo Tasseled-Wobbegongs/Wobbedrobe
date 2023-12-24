@@ -32,10 +32,7 @@ ootdController.addOOTD = (req, res, next) => {
   }
 
   db.query(queryText, values)
-    .then((data) => {
-      console.log(data.rows);
-      res.locals.newOutfit = data.rows[0];
-    })
+    .then((data) => (res.locals.newOutfit = data.rows[0]))
     .then(() => next())
     .catch((err) =>
       next({
@@ -122,7 +119,6 @@ ootdController.getOutfitsForUser = (req, res, next) => {
   db.query(`SELECT * FROM outfits WHERE user_id = ${user_id}`)
     .then((data) => data.rows)
     .then((data) => {
-      console.log('outfits for user are', data);
       res.locals.outfits = data;
     })
     .then(() => next())
@@ -131,6 +127,48 @@ ootdController.getOutfitsForUser = (req, res, next) => {
         log: 'Express error handler caught ootdController.getOutfitsForUser middleware error',
         message: {
           err: 'An error occurred when getting outfits for user, Err: ' + err,
+        },
+      })
+    );
+};
+
+ootdController.deleteDependentOutfits = (req, res, next) => {
+  const { itemType, id } = req.params;
+  res.locals.deletedItemTyp = itemType;
+  const idName =
+    (itemType === 'shoes' ? 'shoes' : itemType.slice(0, itemType.length - 1)) +
+    '_id';
+  db.query(`DELETE FROM outfits WHERE ${idName} = ${id} RETURNING *;`)
+    .then((data) => data.rows)
+    .then((data) => (res.locals.deletedOutfits = data))
+    .then(() => next())
+    .catch((err) =>
+      next({
+        log:
+          'Express error handler caught ootdController.deleteDependentOutfits middleware error: ' +
+          err,
+        message: {
+          err:
+            'An error occurred when deleting an outfit that depends on an item that is going to be deleted, Err: ' +
+            err,
+        },
+      })
+    );
+};
+
+ootdController.deleteOutfitById = (req, res, next) => {
+  const id = req.params.id;
+  db.query(`DELETE FROM outfits WHERE outfit_id = ${id} RETURNING *;`)
+    .then((data) => data.rows[0])
+    .then((data) => (res.locals.deletedOutfit = data))
+    .then(() => next())
+    .catch((err) =>
+      next({
+        log:
+          'Express error handler caught ootdController.deleteOutfitById middleware error: ' +
+          err,
+        message: {
+          err: 'An error occurred when deleting an outfit by id, Err: ' + err,
         },
       })
     );

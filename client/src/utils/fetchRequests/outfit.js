@@ -32,6 +32,7 @@ export function requestOOTDUpdate(id, body) {
 }
 
 export function requestOOTDDelete(id) {
+  console.log(id);
   return fetch(`OOTD/delete/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },

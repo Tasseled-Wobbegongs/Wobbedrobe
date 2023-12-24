@@ -41,7 +41,18 @@ router.post(
   sessionController.startSession,
   (req, res) => {
     console.log('POST /user/signup route hit');
-    res.status(200).json({});
+    const { user_id, username } = res.locals.userData;
+    res.status(200).json({
+      user_id,
+      username,
+      wardrobe: {
+        top: [],
+        bottom: [],
+        overall: [],
+        shoes: [],
+      },
+      outfit: [],
+    });
   }
 );
 
@@ -64,7 +75,6 @@ router.get(
   ootdController.getOutfitsForUser,
   (req, res) => {
     console.log('GET /user/get/:id route hit');
-    console.log(res.locals);
     const { user_id, username } = res.locals.userData;
     res.status(200).json({
       user_id,
