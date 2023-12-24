@@ -68,8 +68,8 @@ userController.verifyUser = async (req, res, next) => {
     }
 
     // if password matches, establish a session
-    req.session.userId = user.user_id;
-    console.log('user verified in userController.verifyUser', user.user_id);
+    // req.session.userId = user.user_id;
+    // console.log('user verified in userController.verifyUser', user.user_id);
     // store username in res.locals to use on homepage
     res.locals.user = user.username;
     res.locals.userData = user;

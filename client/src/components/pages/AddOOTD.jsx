@@ -72,7 +72,7 @@ export default function AddOOTD() {
                   body.bottom_id = outfit.bottom.bottom_id;
                 }
                 console.log(body);
-                if (process.env.NODE_ENV === 'build') {
+                if (process.env.NODE_ENV === 'production') {
                   const res = await requestOOTDAdd(body);
                   setAiImageUrl(res.imageUrl);
                 }
