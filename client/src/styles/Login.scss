@@ -1,0 +1,113 @@
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; // This takes the full height of the viewport
+    width: 100vw; // This takes the full width of the viewport
+    background-image: url('../../docs/assets/images/backgroundwithlines.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.form-container {
+    background-color: #D2CCC8;
+    padding: 2em;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Subtle shadow
+    width: 300px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto; // help in centering if the parent is flex
+    color: black;
+}
+
+// Style for the input groups
+.input-group {
+    text-align: left;
+    margin-bottom: 1em;
+  
+    label {
+      display: block; // esure labels are on their own line
+    }
+  
+    input {
+      width: 100%;
+    }
+}
+  
+input[type='text'],
+input[type='password'] {
+    width: 16rem; 
+    margin: 0.5em 0; // adjust spacing between inputs
+    padding: 1em; // padding for inputs
+    border: 1px solid #ccc;
+    border-radius: 1.3rem; 
+    background-color: #E8E1DC;
+}
+
+input:focus {
+    outline: none;
+}
+  
+input[type='submit'] {
+    background-color: #B7B4B1; 
+    color: white;
+    padding: .7em; 
+    margin-top: 1em; 
+    border: none;
+    border-radius: 16px; 
+    cursor: pointer;
+    width: 7rem; 
+}
+  
+input[type='submit']:hover {
+    background-color: darken(#cccac8, 10%); // darker on hover
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 1em;
+    color: #5f5d5c; 
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none; 
+  
+    &:hover,
+    &:focus {
+      text-decoration: underline; // underline on hover/focus
+    }
+  }
+
+.login-form {
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+}
+  
+.message {
+    color: #5f5d5c; // Error message color
+    text-align: center;
+    margin-top: 1em; // Space above the error message
+}
