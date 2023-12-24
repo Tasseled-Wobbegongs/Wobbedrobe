@@ -12,7 +12,7 @@ export default function Welcome() {
     return (
       <div>
         <Navbar />
-        <p>Hello my name is eunice hi hi hi</p>
+        <p>Trying to make a commit</p>
             <div className="landing-page-button">
               <button onClick={() => dispatch(goToPage('LOGIN'))}>Signin</button>
             </div>
