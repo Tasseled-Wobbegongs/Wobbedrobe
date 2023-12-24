@@ -10,8 +10,8 @@ const ootdController = require('../controllers/ootdController.js');
 router.post(
   '/login',
   userController.verifyUser,
-  cookieController.setSSIDCookie,
-  sessionController.isLoggedIn,
+  // cookieController.setSSIDCookie,
+  // sessionController.isLoggedIn,
   wobbedrobeController.getTopsForUser,
   wobbedrobeController.getBottomsForUser,
   wobbedrobeController.getOverallsForUser,
@@ -19,7 +19,18 @@ router.post(
   ootdController.getOutfitsForUser,
   (req, res) => {
     console.log('POST /user/login route hit');
-    res.status(200).json({});
+    const { user_id, username } = res.locals.userData;
+    res.status(200).json({
+      user_id,
+      username,
+      wardrobe: {
+        top: res.locals.tops,
+        bottom: res.locals.bottoms,
+        overall: res.locals.overalls,
+        shoes: res.locals.shoes,
+      },
+      outfit: res.locals.outfits,
+    });
   }
 );
 

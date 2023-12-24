@@ -50,6 +50,7 @@ CREATE TABLE outfits (
   bottom_id int,
   overall_id int,
   shoes_id int,
+  image_url varchar(255),
   FOREIGN KEY (top_id) REFERENCES tops(top_id),
   FOREIGN kEY (bottom_id) REFERENCES bottoms(bottom_id),
   FOREIGN KEY (overall_id) REFERENCES overalls(overall_id),
