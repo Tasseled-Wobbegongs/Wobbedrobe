@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const Controller = require('./controllers/WobbedrobeController.js');
+const Controller = require('./controllers/wobbedrobeController.js');
 const userController = require('./controllers/userController.js');
 const cookieController = require('./controllers/cookieController.js');
 const sessionController = require('./controllers/sessionController.js');
@@ -12,15 +12,16 @@ require('dotenv').config();
 const app = express();
 const PORT = 8080;
 
-app.use(cors());
-
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client/build')));
-app.use('/downloadedImages', express.static('downloadedImages'));
-
 const userRouter = require('./routes/userRouter.js');
 const ootdRouter = require('./routes/ootdRouter.js');
 const wobbedrobeItemsRouter = require('./routes/wobbedrobeItemsRouter.js');
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.use(express.static(path.join(__dirname, '../client/build')));
+app.use('/downloadedImages', express.static('downloadedImages'));
 
 app.use('/user', userRouter);
 app.use('/wobbedrobe', wobbedrobeItemsRouter);
