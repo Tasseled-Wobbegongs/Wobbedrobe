@@ -1,0 +1,62 @@
+CREATE TABLE users (
+  user_id SERIAL PRIMARY KEY,
+  username varchar(255) NOT NULL UNIQUE,
+  password_hash varchar(255) NOT NULL
+);
+
+CREATE TABLE tops (
+top_id  SERIAL PRIMARY KEY,
+user_id int NOT NULL,
+color varchar(255),
+category varchar(255),
+material varchar(255),
+style varchar(255),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE bottoms (
+bottom_id SERIAL PRIMARY KEY,
+user_id int NOT NULL,
+color varchar(255),
+category varchar(255),
+material varchar(255),
+style varchar(255),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE overalls (
+overall_id SERIAL PRIMARY KEY,
+user_id int NOT NULL,
+color varchar(255),
+category varchar(255),
+material varchar(255),
+style varchar(255),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE shoes (
+shoes_id SERIAL PRIMARY KEY,
+user_id int NOT NULL,
+color varchar(255),
+category varchar(255),
+style varchar(255),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE outfits (
+  outfit_id SERIAL PRIMARY KEY,
+  user_id int NOT NULL,
+  top_id int,
+  bottom_id int,
+  overall_id int,
+  shoes_id int,
+  image_url varchar(255),
+  FOREIGN KEY (top_id) REFERENCES tops(top_id),
+  FOREIGN kEY (bottom_id) REFERENCES bottoms(bottom_id),
+  FOREIGN KEY (overall_id) REFERENCES overalls(overall_id),
+  FOREIGN KEY (shoes_id) REFERENCES shoes(shoes_id),
+  CONSTRAINT if_overall CHECK (
+    (overall_id IS NULL AND top_id IS NOT NULL AND bottom_id IS NOT NULL) OR 
+    (overall_id IS NOT NULL AND top_id IS NULL AND bottom_id IS NULL)
+  )
+);
