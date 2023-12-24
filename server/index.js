@@ -1,6 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const Controller = require('./controllers/WobbedrobeController.js');
+const userController = require('./controllers/userController.js');
+const cookieController = require('./controllers/cookieController.js');
+const sessionController = require('./controllers/sessionController.js');
+const bcrypt = require('bcrypt');
 
 require('dotenv').config();
 
@@ -27,7 +32,9 @@ app.get('*', (req, res) => {
 });
 
 // Unknown route handler
-app.use((req, res) => res.sendStatus(404));
+app.use('*', (req, res) => {
+  res.status(404).send('Not Found');
+});
 
 // Global error handler
 app.use((err, req, res, next) => {
