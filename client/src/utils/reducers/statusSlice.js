@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import defaultUsers from '../../fakeData/user.json';
 
 const initialState = {
-  page: 'HOME',
+  page: 'LANDING_PAGE',
   user: null,
 };
 
