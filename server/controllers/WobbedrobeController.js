@@ -1,20 +1,16 @@
+const db = require('../models/db.js');
 
+const userController = {};
 
-const closet = {};
+// userController.createWobbedrobe = (req, res, next) => {
 
-closet.createWobbedrobe = (req, res, next) => {
+// };
 
+userController.getLogin = (req, res, next) => {
+    
 };
 
-closet.getWobbedrobe = (req, res, next) => {
-
-};
-
-closet.updateWobbedrobe = (req, res, next) => {
-
-};
-
-closet.deleteWobbedrobe = (req, res, next) => {
+userController.deleteAccount = (req, res, next) => {
 
 };
 

@@ -7,14 +7,14 @@
         {
           "top_id": 0,
           "category": "sweater",
-          "color": "red",
+          "color": "#db0a0a",
           "material": "cashmere",
           "style": "elegant"
         },
         {
           "top_id": 1,
           "category": "hoodie",
-          "color": "white",
+          "color": "#ffffff",
           "material": "cotton",
           "style": "casual"
         }
@@ -23,7 +23,7 @@
         {
           "bottom_id": 0,
           "category": "jeans",
-          "color": "blue",
+          "color": "#fffcb2",
           "material": "denim",
           "style": "casual"
         }
@@ -33,7 +33,7 @@
         {
           "shoes_id": 0,
           "category": "slippers",
-          "color": "white",
+          "color": "#ffffff",
           "style": "casual"
         }
       ]
@@ -48,7 +48,7 @@
         {
           "top_id": 2,
           "category": "hoodie",
-          "color": "white",
+          "color": "#ffffff",
           "material": "cotton",
           "style": "casual"
         }
@@ -57,7 +57,7 @@
         {
           "bottom_id": 2,
           "category": "sweatpants",
-          "color": "blue",
+          "color": "#703eb0",
           "material": "cotton",
           "style": "casual"
         }
@@ -67,7 +67,7 @@
         {
           "shoes_id": 1,
           "category": "crocs",
-          "color": "white",
+          "color": "#f6acff",
           "style": "casual"
         }
       ]
@@ -88,14 +88,14 @@
         {
           "top_id": 3,
           "category": "tank",
-          "color": "green",
+          "color": "#6e523b",
           "material": "cotton",
           "style": "casual"
         },
         {
           "top_id": 4,
           "category": "hoodie",
-          "color": "white",
+          "color": "#c2e0bc",
           "material": "cotton",
           "style": "casual"
         }
@@ -104,14 +104,14 @@
         {
           "bottom_id": 2,
           "category": "skirt",
-          "color": "blue",
+          "color": "#e2be5e",
           "material": "cotton",
           "style": "casual"
         },
         {
           "bottom_id": 3,
           "category": "trousers",
-          "color": "black",
+          "color": "f8c1bf",
           "material": "cotton",
           "style": "elegant"
         }
@@ -120,7 +120,7 @@
         {
           "overall_id": 0,
           "category": "dress",
-          "color": "pink",
+          "color": "#68c9d2",
           "style": "elegant"
         }
       ],
@@ -128,12 +128,20 @@
         {
           "shoes_id": 2,
           "category": "boots",
-          "color": "black",
+          "color": "#f6e41c",
           "style": "casual"
         }
       ]
     },
-    "outfit": []
+    "outfit": [
+      {
+        "outfit_id": 0,
+        "top_id": 4,
+        "bottom_id": 2,
+        "overall_id": null,
+        "imageUrl": "/images/fakeOutfit0.png"
+      }
+    ]
   },
   "euny": {
     "user_id": 3,
@@ -143,7 +151,7 @@
         {
           "top_id": 5,
           "category": "blouse",
-          "color": "white",
+          "color": "#981149",
           "material": "silk",
           "style": "elegant"
         }
@@ -152,7 +160,7 @@
         {
           "bottom_id": 4,
           "category": "pants",
-          "color": "black",
+          "color": "#175aab",
           "material": "cotton",
           "style": "elegant"
         }
@@ -162,7 +170,7 @@
         {
           "shoes_id": 3,
           "category": "flats",
-          "color": "beige",
+          "color": "#b02121",
           "style": "elegant"
         }
       ]

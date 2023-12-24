@@ -6,8 +6,8 @@ import UserWobbeDrobe from './components/pages/UserWobbedrobe';
 import AddToWobbeDrobe from './components/pages/AddToWobbedrobe';
 import AddOOTD from './components/pages/AddOOTD';
 import LogInSignUpBox from './components/pages/LogInSignUpBox';
-import LandingPage from './components/pages/LandingPage';
 import './styles/App.scss';
+
 
 function App() {
   const page = useSelector((state) => state.status.page);
@@ -34,13 +34,13 @@ function App() {
 
   return (
     <div className='App'>
-          <Navbar />
-          {page === 'HOME' && <Home />}
-          {page === 'ADD_TO_WOBBEDROBE' && <AddToWobbeDrobe />}
-          {page === 'VIEW_WOBBEDROBE' && <UserWobbeDrobe />}
-          {page === 'ADD_TO_OOTD' && <AddOOTD />}
-          {page === 'GET_INSPIRED' && <GetInspired />}
-          {page === 'VIEW_LOOKBOOK' && <Lookbook />}
+      <Navbar />
+      {page === 'HOME' && <Home />}
+      {page === 'ADD_TO_WOBBEDROBE' && <AddToWobbeDrobe />}
+      {page === 'VIEW_WOBBEDROBE' && <UserWobbeDrobe />}
+      {page === 'ADD_TO_OOTD' && <AddOOTD />}
+      {page === 'LOGIN' && <LogInSignUpBox isSignUp={false} />}
+      {page === 'SIGN_UP' && <LogInSignUpBox isSignUp={true} />}
     </div>
   );
 }
