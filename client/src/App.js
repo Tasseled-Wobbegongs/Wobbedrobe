@@ -39,6 +39,8 @@ function App() {
           {page === 'ADD_TO_WOBBEDROBE' && <AddToWobbeDrobe />}
           {page === 'VIEW_WOBBEDROBE' && <UserWobbeDrobe />}
           {page === 'ADD_TO_OOTD' && <AddOOTD />}
+          {page === 'GET_INSPIRED' && <GetInspired />}
+          {page === 'VIEW_LOOKBOOK' && <Lookbook />}
     </div>
   );
 }
