@@ -1,12 +1,18 @@
 //page8
 
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import WobbedrobeItemCard from '../WobbedrobeItemCard';
+import { requestGetUser } from '../../utils/fetchRequests/user';
+import { requestOOTDAdd } from '../../utils/fetchRequests/outfit';
+import { userLogin } from '../../utils/reducers/statusSlice';
 
 export default function GetInspired() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.status.user);
   const page = useSelector((state) => state.status.page);
-  const wardrobe = useSelector((state) => state.status.user).wardrobe;
+  const wardrobe = user.wardrobe;
+  console.log('wardrobe is', wardrobe);
   const { top, bottom, overall, shoes } = wardrobe;
   const [outfit, setOutfit] = useState({
     top: null,
@@ -39,12 +45,17 @@ export default function GetInspired() {
               randomOutfit.top = randomTop;
               randomOutfit.bottom = randomBottom;
             }
-            console.log(randomOutfit);
+            console.log('random outfit is', randomOutfit);
             setOutfit(randomOutfit);
             setSelected(true);
-            if (process.env.NODE_ENV === 'build') {
-              const res = await requestOOTDAdd(body);
-              setAiImageUrl(res.imageUrl);
+            if (process.env.NODE_ENV === 'production') {
+              const res = await requestOOTDAdd({
+                ...randomOutfit,
+                user_id: user.user_id,
+              });
+              setAiImageUrl(res.newOutfit.image_url);
+              const updatedUser = await requestGetUser(user.user_id);
+              dispatch(userLogin(updatedUser));
             }
           }}
         >

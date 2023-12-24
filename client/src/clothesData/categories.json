@@ -11,5 +11,5 @@
     "shirt"
   ],
   "bottoms": ["jeans", "trousers", "leggings", "sweatpants", "cargopants"],
-  "overalls": ["dress, onesie, jumpsuit"]
+  "overalls": ["dress", "onesie", "jumpsuit"]
 }

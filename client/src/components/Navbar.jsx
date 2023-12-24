@@ -8,32 +8,52 @@ export default function Navbar() {
   const page = useSelector((state) => state.status.page);
   const dispatch = useDispatch();
   if (page !== 'LOGIN' && page !== 'SIGN_UP')
-
     return (
-      <div className="container-of-navbar">
-        <nav className="navbar">
+      <div className='container-of-navbar' style={{ marginTop: '500px' }}>
+        <nav className='navbar'>
           {user && (
             <>
-              <div className="nav-items">
-                <button className="nav-item" onClick={() => dispatch(goToPage('HOME'))}>
+              <div className='nav-items'>
+                <button
+                  className='nav-item'
+                  onClick={() => dispatch(goToPage('HOME'))}
+                >
                   HOME
                 </button>
-                <button className="nav-item" onClick={() => dispatch(goToPage('ADD_TO_WOBBEDROBE'))}>
+                <button
+                  className='nav-item'
+                  onClick={() => dispatch(goToPage('ADD_TO_WOBBEDROBE'))}
+                >
                   ADD TO WOBBEDROBE
                 </button>
-                <button className="nav-item" onClick={() => dispatch(goToPage('VIEW_WOBBEDROBE'))}>
+                <button
+                  className='nav-item'
+                  onClick={() => dispatch(goToPage('VIEW_WOBBEDROBE'))}
+                >
                   VIEW WOBBEDROBE
                 </button>
-                <button className="nav-item" onClick={() => dispatch(goToPage('ADD_TO_OOTD'))}>
+                <button
+                  className='nav-item'
+                  onClick={() => dispatch(goToPage('ADD_TO_OOTD'))}
+                >
                   ADD OOTD
                 </button>
-                <button className="nav-item" onClick={() => dispatch(goToPage('GET_INSPIRED'))}>
+                <button
+                  className='nav-item'
+                  onClick={() => dispatch(goToPage('GET_INSPIRED'))}
+                >
                   GET INSPIRED
                 </button>
-                <button className="nav-item" onClick={() => dispatch(goToPage('VIEW_LOOKBOOK'))}>
+                <button
+                  className='nav-item'
+                  onClick={() => dispatch(goToPage('VIEW_LOOKBOOK'))}
+                >
                   VIEW LOOKBOOK
                 </button>
-                <button className="nav-item" onClick={() => dispatch(goToPage('LANDING_PAGE'))}>
+                <button
+                  className='nav-item'
+                  onClick={() => dispatch(goToPage('LANDING_PAGE'))}
+                >
                   {/* need to add logic to log user out */}
                   LOGOUT
                 </button>
