@@ -1,26 +1,37 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/add/:category', (req, res) => {
-  console.log('POST /wobbedrobe/add/:category route hit');
+const wobbedrobeController = require('../controllers/wobbedrobeController.js');
+
+router.post('/add/:itemType', wobbedrobeController.addItem, (req, res) => {
+  console.log('POST /wobbedrobe/add/:itemType route hit');
   console.log(req.body);
   res.status(200).json({});
 });
 
-router.get('/get/:category', (req, res) => {
-  console.log('GET /wobbedrobe/get/:category route hit');
+router.get(
+  '/getAll/:itemType',
+  wobbedrobeController.getAllItems,
+  (req, res) => {
+    console.log('GET /wobbedrobe/getAll/:itemType route hit');
+    res.status(200).json({});
+  }
+);
+
+router.get('/get/:itemType', (req, res) => {
+  console.log('GET /wobbedrobe/get/:itemType route hit');
   console.log(req.body);
   res.status(200).json({});
 });
 
-router.delete('/delete/:category/:id', (req, res) => {
-  console.log('DELETE /wobbedrobe/delete/:category/:id route hit');
+router.delete('/delete/:itemType/:id', (req, res) => {
+  console.log('DELETE /wobbedrobe/delete/:itemType/:id route hit');
   console.log(req.body);
   res.status(200).json({});
 });
 
-router.post('/update/:category/:id', (req, res) => {
-  console.log('POST /wobbedrobe/update/:category/:id route hit');
+router.post('/update/:itemType/:id', (req, res) => {
+  console.log('POST /wobbedrobe/update/:itemType/:id route hit');
   console.log(req.body);
   res.status(200).json({});
 });
