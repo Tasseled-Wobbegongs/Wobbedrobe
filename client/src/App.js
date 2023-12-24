@@ -11,10 +11,10 @@ import '../src/styles/Login.scss';
 import Lookbook from './components/pages/Lookbook';
 import './styles/App.scss';
 
-
 function App() {
   const page = useSelector((state) => state.status.page);
   console.log(page);
+  console.log('mode is', process.env.NODE_ENV);
   return (
     <div className='App'>
       <Navbar />

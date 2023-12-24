@@ -9,7 +9,7 @@
     "dev": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "webpack serve --mode development",
     "start:backend": "nodemon index.js",
-    "claire": "nodemon index.js"
+    "claire": "cd ../client && NODE_ENV=build npm run build && cd ../server && nodemon index.js"
   },
   "keywords": [],
   "author": "",

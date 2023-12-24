@@ -1,4 +1,5 @@
 import { func } from 'prop-types';
+import React from 'react';
 
 const emoji = {
   shoes: '👞',

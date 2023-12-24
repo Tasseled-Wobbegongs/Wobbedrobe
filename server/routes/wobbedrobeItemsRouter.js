@@ -5,8 +5,10 @@ const wobbedrobeController = require('../controllers/wobbedrobeController.js');
 
 router.post('/add/:itemType', wobbedrobeController.addItem, (req, res) => {
   console.log('POST /wobbedrobe/add/:itemType route hit');
-  console.log(req.body);
-  res.status(200).json({});
+  const itemType = req.params.itemType;
+  const response = {};
+  response[`Added to ${itemType}`] = res.locals[itemType];
+  res.status(200).json(response);
 });
 
 router.get(
@@ -18,7 +20,7 @@ router.get(
   }
 );
 
-router.get('/get/:itemType', (req, res) => {
+router.get('/getById/:itemType/:id', (req, res) => {
   console.log('GET /wobbedrobe/get/:itemType route hit');
   console.log(req.body);
   res.status(200).json({});
