@@ -1,5 +1,5 @@
-export function requestWobbedrobeAdd(category, body) {
-  return fetch(`wobbedrobe/add/${category}`, {
+export function requestWobbedrobeAdd(itemType, body) {
+  return fetch(`wobbedrobe/add/${itemType}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -10,19 +10,19 @@ export function requestWobbedrobeAdd(category, body) {
     .catch((err) => console.log('App: add to wobbedrobe: ERROR', err));
 }
 
-export function requestWobbedrobeGet(category) {
-  return fetch(`wobbedrobe/get/${category}`, {
+export function requestWobbedrobeGet(itemType) {
+  return fetch(`wobbedrobe/get/${itemType}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   })
     .then((res) => res.json())
     .catch((err) =>
-      console.log('App: reading wobbedrobe ', category, ': ERROR: ', err)
+      console.log('App: reading wobbedrobe ', itemType, ': ERROR: ', err)
     );
 }
 
-export function requestWobbedrobeUpdate(category, id, body) {
-  return fetch(`wobbedrobe/update/${category}/${id}`, {
+export function requestWobbedrobeUpdate(itemType, id, body) {
+  return fetch(`wobbedrobe/update/${itemType}/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,8 +33,8 @@ export function requestWobbedrobeUpdate(category, id, body) {
     .catch((err) => console.log('App: update wobbedrobe: ERROR', err));
 }
 
-export function requestWobbedrobeDelete(category, id) {
-  return fetch(`wobbedrobe/delete/${category}/${id}`, {
+export function requestWobbedrobeDelete(itemType, id) {
+  return fetch(`wobbedrobe/delete/${itemType}/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   })

@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import WobbedrobeItemCard from '../WobbedrobeItemCard';
 import { requestOOTDAdd } from '../../utils/fetchRequests/outfit';
+import { userLogin } from '../../utils/reducers/statusSlice';
+import { requestGetUser } from '../../utils/fetchRequests/user';
 
 export default function AddOOTD() {
   const page = useSelector((state) => state.status.page);
   const user = useSelector((state) => state.status.user);
-  console.log(user.wardrobe);
+  const dispatch = useDispatch();
   const [outfit, setOutfit] = useState({
     top: null,
     bottom: null,
     shoes: null,
     overall: null,
   });
-  console.log('outfit', outfit);
   const [selection, setSelection] = useState(null);
   const [canSubmit, setCanSubmit] = useState(false);
   const [aiImageUrl, setAiImageUrl] = useState(null);
@@ -61,20 +62,15 @@ export default function AddOOTD() {
           {canSubmit && (
             <button
               onClick={async () => {
-                const body = {
-                  user_id: user.user_id,
-                  shoes_id: outfit.shoes.shoes_id,
-                };
-                if (outfit.overall) {
-                  body.overall_id = outfit.overall.overall_id;
-                } else {
-                  body.top_id = outfit.top.top_id;
-                  body.bottom_id = outfit.bottom.bottom_id;
-                }
+                const body = { ...outfit };
+                body.user_id = user.user_id;
                 console.log(body);
-                if (process.env.NODE_ENV === 'build') {
+                if (process.env.NODE_ENV === 'production') {
                   const res = await requestOOTDAdd(body);
-                  setAiImageUrl(res.imageUrl);
+                  console.log('response is ', res);
+                  setAiImageUrl(res.newOutfit.image_url);
+                  const updatedUser = await requestGetUser(user.user_id);
+                  dispatch(userLogin(updatedUser));
                 }
                 setCanSubmit(false);
               }}

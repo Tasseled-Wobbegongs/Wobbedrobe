@@ -1,4 +1,9 @@
 import { func } from 'prop-types';
+import React from 'react';
+import { requestWobbedrobeDelete } from '../utils/fetchRequests/wobbedrobe';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestGetUser } from '../utils/fetchRequests/user';
+import { userLogin } from '../utils/reducers/statusSlice';
 
 const emoji = {
   shoes: '👞',
@@ -9,8 +14,8 @@ const emoji = {
 
 export default function WobbedrobeItemCard({ itemType, item }) {
   const { color, category, style, material } = item;
-  console.log(color);
-  // console.log(item);
+  const user = useSelector((state) => state.status.user);
+  const dispatch = useDispatch();
   return (
     <div
       style={{
@@ -46,6 +51,23 @@ export default function WobbedrobeItemCard({ itemType, item }) {
       </div>
       {itemType !== 'shoes' && <LabelText label='Material' text={material} />}
       <LabelText label='Style' text={style} />
+      <div>
+        <button>Update</button>
+        <button
+          onClick={async () => {
+            if (process.env.NODE_ENV === 'production') {
+              await requestWobbedrobeDelete(
+                itemType + (itemType === 'shoes' ? '' : 's'),
+                item[`${itemType}_id`]
+              );
+              const updatedUser = await requestGetUser(user.user_id);
+              dispatch(userLogin(updatedUser));
+            }
+          }}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

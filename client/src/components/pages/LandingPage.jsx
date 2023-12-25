@@ -6,7 +6,7 @@ import Navbar from '../Navbar';
 import '../../styles/LandingPage.scss'
 import wobbedrobe from '../../../docs/assets/images/wobbedrobe-landing.svg';
 
-export default function Welcome() {
+export default function LandingPage() {
   const user = useSelector((state) => state.status.user);
   const page = useSelector((state) => state.status.page);
   const dispatch = useDispatch();
@@ -19,5 +19,5 @@ export default function Welcome() {
               <button onClick={() => dispatch(goToPage('LOGIN'))}>Signin</button>
             </div>
       </div>
-    );
+  );
 }

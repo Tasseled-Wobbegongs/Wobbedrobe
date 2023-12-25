@@ -68,10 +68,12 @@ userController.verifyUser = async (req, res, next) => {
     }
 
     // if password matches, establish a session
-    req.session.userId = user.user_id;
-    console.log('user verified in userController.verifyUser', user.user_id);
+    // req.session.userId = user.user_id;
+    // console.log('user verified in userController.verifyUser', user.user_id);
     // store username in res.locals to use on homepage
     res.locals.user = user.username;
+    res.locals.userData = user;
+
     // go to the next middleware which would be to establish a session
     return next();
   } catch (err) {
@@ -96,6 +98,25 @@ userController.getAllUsers = (req, res, next) => {
         log: `userController.getAllUsers. ERROR: ${err}`,
         message: {
           error: 'userController.getAllUsers. Check logs for more details',
+        },
+      })
+    );
+};
+
+userController.getUserById = (req, res, next) => {
+  const user_id = req.params.id;
+  db.query(`SELECT * FROM users WHERE user_id = ${user_id}`)
+    .then((data) => data.rows[0])
+    .then((data) => {
+      console.log(data);
+      res.locals.userData = data;
+    })
+    .then(() => next())
+    .catch((err) =>
+      next({
+        log: 'Express error handler caught userController.getUserById middleware error',
+        message: {
+          err: 'An error occurred when getting a user, Err: ' + err,
         },
       })
     );

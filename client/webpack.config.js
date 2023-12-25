@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
-  mode: 'development',
+  mode: process.env.NODE_ENV || 'development',
   module: {
     rules: [
       {
@@ -20,7 +20,6 @@ module.exports = {
           },
         },
       },
-      { test: /\.json/, use: ['json-loader'] },
       {
         test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
@@ -35,7 +34,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       // generates an HTML file for your application and automatically injects all your generated bundles into this file
       title: 'Development',
-      template: 'index.html',
+      template: '/public/index.html',
     }),
   ],
   devServer: {
