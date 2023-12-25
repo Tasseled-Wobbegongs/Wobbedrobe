@@ -1,0 +1,47 @@
+.item-card {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  background-color: #b7b4b1;
+  padding-bottom: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  align-items: center;
+  font-family: 'Cormorant Garamond';
+
+  p {
+    margin: 0;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    .delete {
+      height: 20px;
+    }
+  }
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    align-items: center;
+    height: 20px;
+
+    .flex-item {
+      flex: 1;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
