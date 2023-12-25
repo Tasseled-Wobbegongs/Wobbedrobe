@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { goToPage } from '../../utils/reducers/statusSlice';
 import Navbar from '../Navbar';
 import '../../styles/LandingPage.scss'
-import wobbedrobe from '../../../docs/assets/images/wobbedrobe-landing.svg';
+import wobbedrobe from '../../images/wobbedrobe-landing.svg';
+import photo1 from '../../images/mukukoh-landingpage.jpg';
+import photo2 from '../../images/thom-landingpage.jpg';
+import photo3 from '../../images/serafima-landingpage.jpg'
 
 export default function LandingPage() {
   const user = useSelector((state) => state.status.user);
@@ -13,11 +16,17 @@ export default function LandingPage() {
 
     return (
       <div className="landingpage">
-        <Navbar />
-        <p>hello</p>
-            <div className="landing-page-button">
-              <button onClick={() => dispatch(goToPage('LOGIN'))}>Signin</button>
-            </div>
+        <div className="landingpage-logo">
+          <img src={ wobbedrobe } className="wobbedrobe-logo" alt="Wobbedrobe-Logo" />
+        </div>
+        <div className="landingpage-photos">
+          <img src={ photo1 } className="photo1" alt="Wobbedrobe Photo" />
+          <img src={ photo2 } className="photo2" alt="Wobbedrobe Photo" />
+          <img src={ photo3 } className="photo3" alt="Wobbedrobe Photo" />
+        </div>
+        <div className="landingpage-signin">
+            <button onClick={() => dispatch(goToPage('LOGIN'))}>Sign In</button>
+        </div>
       </div>
   );
-}
+};
