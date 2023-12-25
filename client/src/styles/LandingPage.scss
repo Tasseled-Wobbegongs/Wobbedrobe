@@ -1,0 +1,10 @@
+.landingpage {
+    min-height: 100vh;
+    width: 100vw;
+    background-image: url('../../docs/assets/images/page-background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    overflow: hidden; /* Add this line if you want to hide scrollbars */
+}

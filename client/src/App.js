@@ -2,10 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Home from './components/pages/Home';
 import Navbar from './components/Navbar';
-import UserWobbeDrobe from './components/pages/UserWobbedrobe';
-import AddToWobbeDrobe from './components/pages/AddToWobbedrobe';
+import UserWobbedrobe from './components/pages/UserWobbedrobe';
+import AddToWobbedrobe from './components/pages/AddToWobbedrobe';
 import AddOOTD from './components/pages/AddOOTD';
 import LogInSignUpBox from './components/pages/LogInSignUpBox';
+import LandingPage from './components/pages/LandingPage';
+import GetInspired from './components/pages/GetInspired';
+import Lookbook from './components/pages/Lookbook';
 import './styles/App.scss';
 
 
@@ -18,7 +21,7 @@ function App() {
   if (!user && page === 'LANDING_PAGE') {
     return (
       <div className='App'>
-        <LandingPage />
+        <LandingPage className="landingpage-page"/>
       </div>
     );
   }
@@ -26,8 +29,10 @@ function App() {
   if (page === 'LOGIN') { 
     return (
       <div className='App'>
-        {page === 'LOGIN' && <LogInSignUpBox isSignUp={false} />}
-        {page === 'SIGN_UP' && <LogInSignUpBox isSignUp={true} />}
+        <div className="login-signup-page">
+          {page === 'LOGIN' && <LogInSignUpBox isSignUp={false} />}
+          {page === 'SIGN_UP' && <LogInSignUpBox isSignUp={true} />}
+        </div>
       </div>
   )
 };
@@ -35,12 +40,12 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
-      {page === 'HOME' && <Home />}
-      {page === 'ADD_TO_WOBBEDROBE' && <AddToWobbeDrobe />}
-      {page === 'VIEW_WOBBEDROBE' && <UserWobbeDrobe />}
-      {page === 'ADD_TO_OOTD' && <AddOOTD />}
-      {page === 'LOGIN' && <LogInSignUpBox isSignUp={false} />}
-      {page === 'SIGN_UP' && <LogInSignUpBox isSignUp={true} />}
+      {page === 'HOME' && <Home classname="home-page"/>}
+      {page === 'ADD_TO_WOBBEDROBE' && <AddToWobbedrobe classname="add-to-wobbedrobe-page"/>}
+      {page === 'VIEW_WOBBEDROBE' && <UserWobbedrobe className="userwobbedrobe-page"/>}
+      {page === 'ADD_TO_OOTD' && <AddOOTD className="addtoootd-page"/>}
+      {page === 'GET_INSPIRED' && <GetInspired className="getinspired-page"/>}
+      {page === 'LOOKBOOK' && <Lookbook className="lookbook-page"/>}
     </div>
   );
 }

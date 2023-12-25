@@ -5,6 +5,19 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../../docs/assets/images/page-background.png');
-    background-size: auto;
+    background-image: url('../../docs/assets/images/backgroundwithlines.png');
+    background-size: cover; /* or contain, or specific dimensions */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100vw 100vh;
 }
+
+// .home-page, .add-to-wobbedrobe-page, .userwobbedrobe-page, .addtoootd-page, .getinspired-page {
+//     margin: 0;
+//     padding: 0;
+//     background-image: url('../../docs/assets/images/backgroundwithlines.png');
+//     background-size: cover; /* or contain, or specific dimensions */
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     background-size: 100vw 100vh;
+// }
