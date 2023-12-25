@@ -2,7 +2,7 @@
 const sessionController = {};
 
 sessionController.isLoggedIn = (req, res, next) => {
-    const { cookieId, createdAt } = req.body; 
+    const { user_id, username } = req.body; 
 
     Session.findOne( { user_id, username } )
         .then(data => {
