@@ -17,7 +17,9 @@ router.post(
 
 router.get('/get/:id', (req, res) => {
   console.log('GET /ootd/get/:id route hit');
-  console.log(req.body);
+  // console.log(req.body);
+  //want to use req.params to retrieve data from the URL params
+  console.log(req.params.id)
   res.status(200).json({});
 });
 

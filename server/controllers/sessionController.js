@@ -4,10 +4,10 @@ const sessionController = {};
 sessionController.isLoggedIn = (req, res, next) => {
     const { cookieId, createdAt } = req.body; 
 
-    Session.find( {cookieId, createdAt} )
+    Session.findOne( { user_id, username } )
         .then(data => {
-            if(data.cookieId && data.createdAt) {
-                return next(res.redirect('/user/login'));
+            if(data) {
+                return next(res.redirect('/'));
             }  else {
                 return next(res.redirect('/user/signup'))
             } 
@@ -18,12 +18,14 @@ sessionController.isLoggedIn = (req, res, next) => {
 };
 
 sessionController.startSession = (req, res, next) => {
-    const newSession = new Session({ cookieId: res.locals.id })
+    const newSession = new Session({ cookieId: res.locals.userData })
 
     newSession.save()
-        .then((savedSession) => console.log(savedSession))
-        .catch((err) => next('Error in sessionController.startSession: ' + JSON.stringify(err)))
-    return next();
+        .then((savedSession) => {
+       console.log(savedSession)
+       return next();   
+}   )
+    .catch((err) => next('Error in sessionController.startSession: ' + JSON.stringify(err)))
 };
 
 module.exports = sessionController;

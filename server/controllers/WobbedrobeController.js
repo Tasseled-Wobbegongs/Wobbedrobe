@@ -92,9 +92,6 @@ wobbedrobeController.getBottomsForUser = (req, res, next) => {
     );
 };
 
-<<<<<<< HEAD
-module.exports = userController;
-=======
 wobbedrobeController.getOverallsForUser = (req, res, next) => {
   const user_id = res.locals.userData.user_id;
   db.query(`SELECT * FROM overalls WHERE user_id = ${user_id};`)
@@ -157,4 +154,3 @@ wobbedrobeController.deleteItem = (req, res, next) => {
 };
 
 module.exports = wobbedrobeController;
->>>>>>> dev
