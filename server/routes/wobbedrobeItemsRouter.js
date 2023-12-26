@@ -38,10 +38,15 @@ router.delete(
   }
 );
 
-router.post('/update/:itemType/:id', (req, res) => {
-  console.log('POST /wobbedrobe/update/:itemType/:id route hit');
-  console.log(req.body);
-  res.status(200).json({});
-});
+router.post(
+  '/update/:itemType/:id',
+  wobbedrobeController.updateItem,
+  (req, res) => {
+    console.log('POST /wobbedrobe/update/:itemType/:id route hit');
+    console.log(req.body);
+    console.log(req.locals);
+    res.status(200).json(res.locals);
+  }
+);
 
 module.exports = router;
