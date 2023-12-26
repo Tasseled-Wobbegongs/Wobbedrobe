@@ -153,4 +153,37 @@ wobbedrobeController.deleteItem = (req, res, next) => {
     );
 };
 
+wobbedrobeController.updateItem = (req, res, next) => {
+  const { propertyToChange, updatedProperty } = req.body;
+  const { itemType, id } = req.params;
+  console.log(req.params);
+  const idName =
+    (itemType === 'shoes' ? 'shoes' : itemType.slice(0, itemType.length - 1)) +
+    '_id';
+  db.query(
+    `UPDATE ${itemType} ` +
+      `SET ${propertyToChange} = $1 ` +
+      `WHERE ${idName} = ${id} ` +
+      `RETURNING *;`,
+    [updatedProperty]
+  )
+    .then((data) => data.rows[0])
+    .then((data) => {
+      res.locals.updatedItem = itemType;
+      res.locals.updatedProperty = propertyToChange;
+      res.locals.updatedItem = data;
+    })
+    .then(() => next())
+    .catch((err) =>
+      next({
+        log:
+          'Express error handler caught wobbedrobeController.updateItem middleware error: ' +
+          err,
+        message: {
+          err: 'An error occurred when updating an item, Err: ' + err,
+        },
+      })
+    );
+};
+
 module.exports = wobbedrobeController;
