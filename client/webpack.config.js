@@ -34,7 +34,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       // generates an HTML file for your application and automatically injects all your generated bundles into this file
       title: 'Development',
-      template: '/public/index.html',
+      template: './public/index.html',
     }),
   ],
   devServer: {
