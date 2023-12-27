@@ -6,6 +6,7 @@ wobbedrobeController.getAllItems = (req, res, next) => {
   const itemType = req.params.itemType;
   db.query(`SELECT * FROM ${itemType};`)
     .then((data) => data.rows)
+    .then((data) => (res.locals.all = data))
     .then((data) => next())
     .catch((err) =>
       next({
@@ -148,6 +149,67 @@ wobbedrobeController.deleteItem = (req, res, next) => {
           err,
         message: {
           err: 'An error occurred when deleting an item, Err: ' + err,
+        },
+      })
+    );
+};
+
+wobbedrobeController.getById = (req, res, next) => {
+  const { itemType, id } = req.params;
+  const idName =
+    (itemType === 'shoes' ? 'shoes' : itemType.slice(0, itemType.length - 1)) +
+    '_id';
+  db.query(`SELECT * FROM ${itemType} WHERE ${idName} = ${id}`)
+    .then((data) => {
+      console.log(data.rows);
+      return data.rows[0];
+    })
+    .then((data) => (res.locals.item = data))
+    .then(() => next())
+    .catch((err) =>
+      next({
+        log:
+          'Express error handler caught wobbedrobeController.getById middleware error: ' +
+          err,
+        message: {
+          err:
+            'An error occurred when getting an item of ' +
+            itemType +
+            ' by id, Err: ' +
+            err,
+        },
+      })
+    );
+};
+
+wobbedrobeController.updateItem = (req, res, next) => {
+  const { propertyToChange, updatedProperty } = req.body;
+  const { itemType, id } = req.params;
+  console.log(req.params);
+  const idName =
+    (itemType === 'shoes' ? 'shoes' : itemType.slice(0, itemType.length - 1)) +
+    '_id';
+  db.query(
+    `UPDATE ${itemType} ` +
+      `SET ${propertyToChange} = $1 ` +
+      `WHERE ${idName} = ${id} ` +
+      `RETURNING *;`,
+    [updatedProperty]
+  )
+    .then((data) => data.rows[0])
+    .then((data) => {
+      res.locals.updatedItem = itemType;
+      res.locals.updatedProperty = propertyToChange;
+      res.locals.updatedItem = data;
+    })
+    .then(() => next())
+    .catch((err) =>
+      next({
+        log:
+          'Express error handler caught wobbedrobeController.updateItem middleware error: ' +
+          err,
+        message: {
+          err: 'An error occurred when updating an item, Err: ' + err,
         },
       })
     );

@@ -1,7 +1,10 @@
 const express = require('express');
+<<<<<<< HEAD
 // const userController = require('./se')
 const path = require('path');
 const mongoose = require('mongoose');
+=======
+>>>>>>> dev
 const router = express.Router();
 const userController = require('../controllers/userController.js');
 const cookieController = require('../controllers/cookieController.js');
@@ -27,7 +30,11 @@ const ootdController = require('../controllers/ootdController.js');
 router.post(
   '/login',
   userController.verifyUser,
+<<<<<<< HEAD
   // cookieController.setCookie,
+=======
+  // cookieController.setSSIDCookie,
+>>>>>>> dev
   // sessionController.isLoggedIn,
   wobbedrobeController.getTopsForUser,
   wobbedrobeController.getBottomsForUser,

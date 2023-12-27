@@ -17,15 +17,23 @@ router.get(
   wobbedrobeController.getAllItems,
   (req, res) => {
     console.log('GET /wobbedrobe/getAll/:itemType route hit');
-    res.status(200).json({});
+    const { itemType } = req.params;
+    const response = {};
+    response[itemType] = res.locals.all;
+    res.status(200).json(response);
   }
 );
 
-router.get('/getById/:itemType/:id', (req, res) => {
-  console.log('GET /wobbedrobe/get/:itemType route hit');
-  console.log(req.body);
-  res.status(200).json({});
-});
+router.get(
+  '/getById/:itemType/:id',
+  wobbedrobeController.getById,
+  (req, res) => {
+    console.log('GET /wobbedrobe/getById/:itemType/:id route hit');
+    const { itemType } = req.params;
+    const response = { itemType, item: res.locals.item };
+    res.status(200).json(response);
+  }
+);
 
 router.delete(
   '/delete/:itemType/:id',
@@ -38,10 +46,15 @@ router.delete(
   }
 );
 
-router.post('/update/:itemType/:id', (req, res) => {
-  console.log('POST /wobbedrobe/update/:itemType/:id route hit');
-  console.log(req.body);
-  res.status(200).json({});
-});
+router.post(
+  '/update/:itemType/:id',
+  wobbedrobeController.updateItem,
+  (req, res) => {
+    console.log('POST /wobbedrobe/update/:itemType/:id route hit');
+    console.log(req.body);
+    console.log(req.locals);
+    res.status(200).json(res.locals);
+  }
+);
 
 module.exports = router;
