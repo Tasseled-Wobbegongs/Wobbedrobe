@@ -1,3 +1,37 @@
+.wobbedrobe {
+  margin: 0 100px;
+  margin-top: 100px;
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+
+    button {
+      width: 100px;
+      height: 40px;
+      background-color: rgba(152, 114, 79, 0.75);
+      border: none;
+      color: #d1cfce;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        color: white;
+        background-color: rgba(182, 118, 82, 0.75);
+        box-shadow: 2px 2px 5px white;
+      }
+    }
+  }
+}
+
 .item-card {
   display: flex;
   flex-direction: column;
@@ -63,7 +97,7 @@
     }
 
     .key {
-      background-color: #dcdccd;
+      background-color: #e0e0da;
       font-weight: 700;
       display: flex;
       align-items: center;

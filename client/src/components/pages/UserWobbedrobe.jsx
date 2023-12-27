@@ -10,19 +10,16 @@ export default function UserWobbeDrobe() {
   const [selection, setSelection] = useState(null);
   if (page === 'VIEW_WOBBEDROBE')
     return (
-      <div
-        className='wobbedrobe'
-        style={{
-          margin: '0 100px',
-        }}
-      >
-        <button onClick={() => setSelection('top')}>Tops</button>
-        <button onClick={() => setSelection('bottom')}>Bottoms</button>
-        <button onClick={() => setSelection('overall')}>Overalls</button>
-        <button onClick={() => setSelection('shoes')}>Shoes</button>
-        <button onClick={() => setSelection('all')}>All</button>
+      <div className='wobbedrobe'>
+        <div className='buttons'>
+          <button onClick={() => setSelection('top')}>Tops</button>
+          <button onClick={() => setSelection('bottom')}>Bottoms</button>
+          <button onClick={() => setSelection('overall')}>Overalls</button>
+          <button onClick={() => setSelection('shoes')}>Shoes</button>
+          <button onClick={() => setSelection('all')}>All</button>
+        </div>
         {selection && selection !== 'all' && (
-          <div>
+          <div className='card-container'>
             {[...user.wardrobe[selection]]
               .sort((a, b) => {
                 return a[`${selection}_id`] - b[`${selection}_id`];
@@ -37,12 +34,7 @@ export default function UserWobbeDrobe() {
           </div>
         )}
         {selection === 'all' && (
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-            }}
-          >
+          <div className='card-container'>
             {[
               ...Object.keys(user.wardrobe).map((key) =>
                 user.wardrobe[key].map((item) => (
