@@ -5,11 +5,12 @@ import '../styles/Navbar.scss';
 
 export default function Navbar() {
   const user = useSelector((state) => state.status.user);
+  console.log('user is ', user);
   const page = useSelector((state) => state.status.page);
   const dispatch = useDispatch();
   if (page !== 'LOGIN' && page !== 'SIGN_UP')
     return (
-      <div className='container-of-navbar' style={{ marginTop: '500px' }}>
+      <div className='container-of-navbar'>
         <nav className='navbar'>
           {user && (
             <>

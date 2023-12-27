@@ -16,7 +16,7 @@ export default function AddToWobbeDrobe() {
   const [selection, setSelection] = useState(null);
   if (page === 'ADD_TO_WOBBEDROBE')
     return (
-      <div>
+      <div style={{ marginTop: '100px' }}>
         {!selection && (
           <div>
             <button onClick={() => setSelection('tops')}>Top</button>
