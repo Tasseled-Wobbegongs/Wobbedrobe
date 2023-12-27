@@ -17,19 +17,18 @@ userController.createUser = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // insert the new user into the database and return user_id and username
-    const queryText =
-      'INSERT INTO users (username, password_hash) VALUES ($1, $2) RETURNING user_id, username;';
+    const queryText ='INSERT INTO users (username, password_hash) VALUES ($1, $2) RETURNING user_id, username';
     const queryParams = [username, hashedPassword];
     const { rows } = await db.query(queryText, queryParams);
     console.log('completed query in userController.createUser');
 
     // store user_id in session
     // req.session object is used to store data that you want to keep across requests made by the same user
-    req.session.userId = rows[0].user_id;
-    console.log(
-      'this is req.session.userId in userController.createUser',
-      req.session.userId
-    );
+    // req.session.userId = rows[0].user_id;
+    // console.log(
+    //   'this is req.session.userId in userController.createUser',
+    //   req.session.userId
+    // );
     // store username in res locals
     res.locals.user = rows[0].username;
 
@@ -57,16 +56,16 @@ userController.verifyUser = async (req, res, next) => {
     const queryText =
       'SELECT user_id, username, password_hash FROM users WHERE username = $1';
       // 'SELECT user_id, username, password_hash FROM users WHERE username = claire'
-    const queryParams = [username, password];
+    const queryParams = [username];
 
 
     // DEBUG
     // test login data, username = claire    password = 1234
     // const testQuery = 'SELECT user_id, username, password_hash FROM users WHERE username = claire'
-    const testQuery = 'SELECT * FROM users WHERE username = "claire"'
-    console.log('BEGINNING TEST QUERY')
-    const testRow = await db.query(testQuery)
-    console.log('TEST QUERY SUCCESSFUL', testRow)
+    // const testQuery = 'SELECT * FROM users WHERE username = "claire"'
+    // console.log('BEGINNING TEST QUERY')
+    // const testRow = await db.query(testQuery)
+    // console.log('TEST QUERY SUCCESSFUL', testRow)
     // DEBUG
     // username , password, user_id
 

@@ -27,8 +27,8 @@ const ootdController = require('../controllers/ootdController.js');
 router.post(
   '/login',
   userController.verifyUser,
-  cookieController.setCookie,
-  sessionController.isLoggedIn,
+  // cookieController.setCookie,
+  // sessionController.isLoggedIn,
   wobbedrobeController.getTopsForUser,
   wobbedrobeController.getBottomsForUser,
   wobbedrobeController.getOverallsForUser,
@@ -54,10 +54,11 @@ router.post(
 router.post(
   '/signup',
   userController.createUser,
-  cookieController.setSSIDCookie,
-  sessionController.startSession,
+  // cookieController.setSSIDCookie,
+  // sessionController.startSession,
   (req, res) => {
     console.log('POST /user/signup route hit');
+    console.log(process.env.PG_URI);
     const { user_id, username } = res.locals.userData;
     res.status(200).json({
       user_id,
