@@ -19,6 +19,8 @@ export default function WobbedrobeItemCard({ itemType, item }) {
   const [editStyle, setEditStyle] = useState(false);
   const [editMaterial, setEditMaterial] = useState(false);
 
+  const dispatch = useDispatch();
+
   const colorProps = {
     color,
     userId,
@@ -82,7 +84,6 @@ function ColorRow({
 }) {
   const dispatch = useDispatch();
   const [updatedColor, setUpdatedColor] = useState(color);
-  console.log(itemId);
   return (
     <div className='flex-row'>
       <div className='flex-item key color'>
@@ -140,6 +141,7 @@ function StyleRow({
   editStyle,
   setEditStyle,
 }) {
+  const dispatch = useDispatch();
   return (
     <div className='flex-row'>
       <div className='flex-item key style'>
@@ -151,7 +153,7 @@ function StyleRow({
           onSubmit={async (e) => {
             e.preventDefault();
             const body = {
-              propertyToChange: 'color',
+              propertyToChange: 'style',
               updatedProperty: e.target.updatedStyle.value,
             };
             if (process.env.NODE_ENV === 'production') {
@@ -173,7 +175,7 @@ function StyleRow({
         </form>
       )}
       {!editStyle && (
-        <div className='flex-item value color'>
+        <div className='flex-item value style'>
           <p>{style}</p>
         </div>
       )}
@@ -194,6 +196,7 @@ function MaterialRow({
   editMaterial,
   setEditMaterial,
 }) {
+  const dispatch = useDispatch();
   return (
     <div className='flex-row'>
       <div className='flex-item key material'>
@@ -205,7 +208,7 @@ function MaterialRow({
           onSubmit={async (e) => {
             e.preventDefault();
             const body = {
-              propertyToChange: 'color',
+              propertyToChange: 'material',
               updatedProperty: e.target.updatedMaterial.value,
             };
             if (process.env.NODE_ENV === 'production') {
@@ -227,7 +230,7 @@ function MaterialRow({
         </form>
       )}
       {!editMaterial && (
-        <div className='flex-item value color'>
+        <div className='flex-item value material'>
           <p>{material}</p>
         </div>
       )}

@@ -1,0 +1,35 @@
+.add-ootd {
+  margin: 0 70px;
+  margin-top: 100px;
+  overflow-x: scroll;
+
+  .items-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
+
+    .container-header {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      text-transform: uppercase;
+      writing-mode: vertical-lr;
+      text-orientation: sideways-right;
+    }
+
+    .cards-container {
+      display: flex;
+
+      .chosen {
+        background-color: rgb(201, 156, 156);
+        border-radius: 30px;
+      }
+
+      .item-card {
+        cursor: pointer;
+      }
+    }
+  }
+}

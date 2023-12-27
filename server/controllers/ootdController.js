@@ -6,6 +6,7 @@ const path = require('path');
 const ootdController = {};
 
 ootdController.addOOTD = (req, res, next) => {
+  console.log(req.body);
   const { user_id, shoes, top, bottom, overall } = req.body;
   let queryText = 'INSERT INTO outfits' + '(user_id, shoes_id, ';
   if (overall) {
@@ -45,6 +46,12 @@ ootdController.addOOTD = (req, res, next) => {
 };
 
 ootdController.getAiImage = (req, res, next) => {
+  const { userImageUrl } = req.body;
+  if (userImageUrl) {
+    res.locals.userImageUrl = userImageUrl;
+    return next();
+  }
+
   const outfit = res.locals.outfit;
   let prompt = 'Please generate an outfit image with the following items: ';
   for (const itemType of Object.keys(outfit)) {
@@ -67,13 +74,27 @@ ootdController.getAiImage = (req, res, next) => {
     );
 };
 
-ootdController.saveAiImage = async (req, res, next) => {
+ootdController.saveImage = async (req, res, next) => {
   try {
-    const onlineImageUrl = res.locals.onlineImageUrl;
-    console.log(onlineImageUrl);
-    const imageResponse = await fetch(onlineImageUrl);
-    const arrayBuffer = await imageResponse.arrayBuffer();
-    const imageBuffer = Buffer.from(arrayBuffer);
+    let imageBuffer;
+    if (res.locals.onlineImageUrl) {
+      const onlineImageUrl = res.locals.onlineImageUrl;
+      console.log(onlineImageUrl);
+      const imageResponse = await fetch(onlineImageUrl);
+      const arrayBuffer = await imageResponse.arrayBuffer();
+      imageBuffer = Buffer.from(arrayBuffer);
+    } else if (res.locals.userImageUrl) {
+      const userImageUrl = req.body.userImageUrl;
+      const base64Data = userImageUrl.split(',')[1];
+      imageBuffer = Buffer.from(base64Data, 'base64');
+    } else {
+      return next({
+        log: 'Express error handler caught ootdController.saveOnlineImage middleware error',
+        message: {
+          err: 'Unknown error occurred when saving ootd image for user, Err ',
+        },
+      });
+    }
 
     const targetDirectory = path.join(__dirname, '../downloadedImages');
     const imageName = `ootd${Date.now()}.png`;
@@ -85,7 +106,9 @@ ootdController.saveAiImage = async (req, res, next) => {
     return next();
   } catch (err) {
     return next({
-      log: 'Express error handler caught ootdController.saveAiImage middleware error',
+      log:
+        'Express error handler caught ootdController.saveOnlineImage middleware error:' +
+        err,
       message: {
         err: 'An error occurred when saving ootd image for user, Err: ' + err,
       },

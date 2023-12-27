@@ -1,5 +1,4 @@
 const express = require('express');
-const userController = require('./se')
 const router = express.Router();
 
 const userController = require('../controllers/userController.js');
@@ -11,8 +10,8 @@ const ootdController = require('../controllers/ootdController.js');
 router.post(
   '/login',
   userController.verifyUser,
-  cookieController.setSSIDCookie,
-  sessionController.isLoggedIn,
+  // cookieController.setSSIDCookie,
+  // sessionController.isLoggedIn,
   wobbedrobeController.getTopsForUser,
   wobbedrobeController.getBottomsForUser,
   wobbedrobeController.getOverallsForUser,
