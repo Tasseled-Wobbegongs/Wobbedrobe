@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { goToPage } from '../utils/reducers/statusSlice';
+import { goToPage, userLogout } from '../utils/reducers/statusSlice';
 import '../styles/Navbar.scss';
 
 export default function Navbar() {
@@ -53,9 +53,11 @@ export default function Navbar() {
                 </button>
                 <button
                   className='nav-item'
-                  onClick={() => dispatch(goToPage('LANDING_PAGE'))}
+                  onClick={() => {
+                    dispatch(goToPage('LANDING_PAGE'));
+                    dispatch(userLogout());
+                  }}
                 >
-                  {/* need to add logic to log user out */}
                   LOGOUT
                 </button>
               </div>
