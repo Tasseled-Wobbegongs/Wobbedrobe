@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+
 const path = require('path');
 
 module.exports = {
@@ -35,6 +37,9 @@ module.exports = {
       // generates an HTML file for your application and automatically injects all your generated bundles into this file
       title: 'Development',
       template: './public/index.html',
+    }),
+    new CopyPlugin({
+      patterns: [{ from: 'public/images', to: 'images' }],
     }),
   ],
   devServer: {

@@ -6,6 +6,8 @@ import WobbedrobeItemCard from '../WobbedrobeItemCard';
 import { requestGetUser } from '../../utils/fetchRequests/user';
 import { requestOOTDAdd } from '../../utils/fetchRequests/outfit';
 import { userLogin } from '../../utils/reducers/statusSlice';
+import { Audio } from 'react-loader-spinner';
+import '../../styles/GetInspired.scss';
 
 export default function GetInspired() {
   const dispatch = useDispatch();
@@ -22,10 +24,11 @@ export default function GetInspired() {
   });
   const [selected, setSelected] = useState(null);
   const [aiImageUrl, setAiImageUrl] = useState(null);
+  const [fetching, setFetching] = useState(false);
 
   if (page === 'GET_INSPIRED')
     return (
-      <div>
+      <div className='get-inspired'>
         <button
           onClick={async () => {
             const randomOutfit = {};
@@ -53,7 +56,7 @@ export default function GetInspired() {
                 ...randomOutfit,
                 user_id: user.user_id,
               });
-              setAiImageUrl(res.newOutfit.image_url);
+              setAiImageUrl(res.image_url);
               const updatedUser = await requestGetUser(user.user_id);
               dispatch(userLogin(updatedUser));
             }

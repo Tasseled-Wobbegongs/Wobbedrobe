@@ -41,3 +41,14 @@ export function requestWobbedrobeDelete(itemType, id) {
     .then((res) => res.json())
     .catch((err) => console.log('App: delete wobbedrobe item: ERROR: ', err));
 }
+
+export function requestWobbedrobeGetById(itemType, id) {
+  return fetch(`wobbedrobe/getById/${itemType}/${id}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((res) => res.json())
+    .catch((err) =>
+      console.log('App: get wobbedrobe item by id: ERROR: ', err)
+    );
+}

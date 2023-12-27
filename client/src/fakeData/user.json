@@ -137,9 +137,16 @@
       {
         "outfit_id": 0,
         "top_id": 4,
+        "top": {
+          "top_id": 4,
+          "category": "hoodie",
+          "color": "#c2e0bc",
+          "material": "cotton",
+          "style": "casual"
+        },
         "bottom_id": 2,
         "overall_id": null,
-        "imageUrl": "/images/fakeOutfit0.png"
+        "image_url": "/images/fakeOutfit0.png"
       }
     ]
   },
