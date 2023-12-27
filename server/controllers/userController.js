@@ -1,8 +1,9 @@
 const db = require('../models/db.js');
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const express = require('express'); // // put this in server to be able to use in all server files
 const session = require('express-session'); // put this in server to be able to use in all server files
-
+const Session = require('../models/sessionModel.js')
 // userController would be called from server once it receives a post request then session middleware would be called to set a new session
 
 const userController = {};
@@ -31,6 +32,10 @@ userController.createUser = async (req, res, next) => {
     );
     // store username in res locals
     res.locals.user = rows[0].username;
+
+    const newSession = new Session({userId: req.session.userId});
+    await newSession.save();
+
     // go to next middleware which would be to create session with userId
     return next();
   } catch (err) {
@@ -51,7 +56,21 @@ userController.verifyUser = async (req, res, next) => {
     // query the database for a user
     const queryText =
       'SELECT user_id, username, password_hash FROM users WHERE username = $1';
-    const queryParams = [username];
+      // 'SELECT user_id, username, password_hash FROM users WHERE username = claire'
+    const queryParams = [username, password];
+
+
+    // DEBUG
+    // test login data, username = claire    password = 1234
+    // const testQuery = 'SELECT user_id, username, password_hash FROM users WHERE username = claire'
+    const testQuery = 'SELECT * FROM users WHERE username = "claire"'
+    console.log('BEGINNING TEST QUERY')
+    const testRow = await db.query(testQuery)
+    console.log('TEST QUERY SUCCESSFUL', testRow)
+    // DEBUG
+    // username , password, user_id
+
+
     const { rows } = await db.query(queryText, queryParams);
     console.log('completed query in userController.verifyUser');
 
@@ -60,6 +79,7 @@ userController.verifyUser = async (req, res, next) => {
     }
 
     const user = rows[0];
+    console.log('user!!', user)
     // compare the submitted password with the stored password hash
     const isMatch = await bcrypt.compare(password, user.password_hash);
 

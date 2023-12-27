@@ -1,13 +1,16 @@
+const mongoose = require('mongoose');
+const Session = require('../models/sessionModel');
 
 const sessionController = {};
 
 sessionController.isLoggedIn = (req, res, next) => {
-    const { user_id, username } = req.body; 
+    const { cookieId, createdAt } = req.body; 
+    console.log("CookieID", cookieId)
 
-    Session.findOne( { user_id, username } )
+    Session.findOne({ cookieId, createdAt })
         .then(data => {
-            if(data) {
-                return next(res.redirect('/'));
+            if(data && data.cookieId && data.createdAt) {
+                return next();
             }  else {
                 return next(res.redirect('/user/signup'))
             } 
@@ -18,14 +21,12 @@ sessionController.isLoggedIn = (req, res, next) => {
 };
 
 sessionController.startSession = (req, res, next) => {
-    const newSession = new Session({ cookieId: res.locals.userData })
+    const newSession = new Session({ cookieId: res.locals.id })
 
     newSession.save()
-        .then((savedSession) => {
-       console.log(savedSession)
-       return next();   
-}   )
-    .catch((err) => next('Error in sessionController.startSession: ' + JSON.stringify(err)))
+        .then((savedSession) => console.log(savedSession))
+        .catch((err) => next('Error in sessionController.startSession: ' + JSON.stringify(err)))
+        return next();
 };
 
 module.exports = sessionController;

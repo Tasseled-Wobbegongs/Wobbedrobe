@@ -1,17 +1,33 @@
 const express = require('express');
-const userController = require('./se')
+// const userController = require('./se')
+const path = require('path');
+const mongoose = require('mongoose');
 const router = express.Router();
-
 const userController = require('../controllers/userController.js');
 const cookieController = require('../controllers/cookieController.js');
 const sessionController = require('../controllers/sessionController.js');
 const wobbedrobeController = require('../controllers/wobbedrobeController.js');
 const ootdController = require('../controllers/ootdController.js');
 
+
+// const MONGO_URI = process.env.MONGO_URI;
+// console.log(MONGO_URI);
+// mongoose.connect(MONGO_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// })
+//     .then(() => {
+//         console.log('Database connected..');
+//     })
+//     .catch(() => {
+//         console.log('ERROR: DATABASE NOT CONNECTED!');
+//     });
+
+
 router.post(
   '/login',
   userController.verifyUser,
-  cookieController.setSSIDCookie,
+  cookieController.setCookie,
   sessionController.isLoggedIn,
   wobbedrobeController.getTopsForUser,
   wobbedrobeController.getBottomsForUser,
@@ -90,5 +106,25 @@ router.get(
     });
   }
 );
+
+
+// Unknown route handler
+router.use('*', (req, res) => {
+  res.status(404).send('Not Found');
+});
+
+// Global error handler
+router.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+});
+
+
 
 module.exports = router;

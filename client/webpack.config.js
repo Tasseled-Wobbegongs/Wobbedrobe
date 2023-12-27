@@ -40,17 +40,20 @@ module.exports = {
   devServer: {
     static: {
       // match the output path
-      directory: path.resolve(__dirname, 'build'),
-      publicPath: '/build',
+      // directory: path.resolve(__dirname, 'build'),
+      // publicPath: '/build',
+      publicPath: '/',
+			directory: path.join(__dirname, 'dist'),
     },
     proxy: {
-      '/api': {
+      '/api/**': {
         // request that  start with /api wil be intercepted by the development server
         // any requests that start with '/api' on the development server will be forwarded to 'http://localhost:3000'
         target: 'http://localhost:3000',
         secure: false,
       },
     },
+    historyApiFallback: true, 
   },
   resolve: {
     extensions: ['.js', '.jsx'],
