@@ -6,28 +6,28 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
+}
 
-  .buttons {
-    display: flex;
-    gap: 10px;
-    margin-left: 30px;
-    margin-bottom: 20px;
+.itemType-buttons {
+  display: flex;
+  gap: 10px;
+  margin-left: 30px;
+  margin-bottom: 20px;
 
-    button {
-      width: 100px;
-      height: 40px;
-      background-color: rgba(152, 114, 79, 0.75);
-      border: none;
-      color: #d1cfce;
-      border-radius: 20px;
-      font-size: 1rem;
-      cursor: pointer;
+  button {
+    width: 100px;
+    height: 40px;
+    background-color: rgba(152, 114, 79, 0.75);
+    border: none;
+    color: #d1cfce;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
 
-      &:hover {
-        color: white;
-        background-color: rgba(182, 118, 82, 0.75);
-        box-shadow: 2px 2px 5px white;
-      }
+    &:hover {
+      color: white;
+      background-color: rgba(182, 118, 82, 0.75);
+      box-shadow: 2px 2px 5px white;
     }
   }
 }
