@@ -11,7 +11,7 @@ export default function UserWobbeDrobe() {
   if (page === 'VIEW_WOBBEDROBE')
     return (
       <div className='wobbedrobe'>
-        <div className='buttons'>
+        <div className='itemType-buttons'>
           <button onClick={() => setSelection('top')}>Tops</button>
           <button onClick={() => setSelection('bottom')}>Bottoms</button>
           <button onClick={() => setSelection('overall')}>Overalls</button>

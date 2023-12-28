@@ -8,6 +8,7 @@ import materials from '../../clothesData/materials.json';
 import styles from '../../clothesData/style.json';
 import { requestWobbedrobeAdd } from '../../utils/fetchRequests/wobbedrobe';
 import { requestGetUser } from '../../utils/fetchRequests/user';
+import '../../styles/AddToWobbeDrobe.scss';
 
 export default function AddToWobbeDrobe() {
   const page = useSelector((state) => state.status.page);
@@ -16,9 +17,9 @@ export default function AddToWobbeDrobe() {
   const [selection, setSelection] = useState(null);
   if (page === 'ADD_TO_WOBBEDROBE')
     return (
-      <div style={{ marginTop: '100px' }}>
+      <div className='add-to-wobbedrobe'>
         {!selection && (
-          <div>
+          <div className='itemType-buttons'>
             <button onClick={() => setSelection('tops')}>Top</button>
             <button onClick={() => setSelection('bottoms')}>Bottoms</button>
             <button onClick={() => setSelection('overalls')}>Overalls</button>
