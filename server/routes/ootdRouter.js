@@ -6,7 +6,6 @@ const ootdController = require('../controllers/ootdController.js');
 router.post(
   '/add',
   ootdController.addOOTD,
-  ootdController.getAiImage,
   ootdController.saveImage,
   ootdController.updateNewOutfitWithImageUrl,
   (req, res) => {
@@ -16,6 +15,13 @@ router.post(
     res.status(200).json(res.locals.newOutfit);
   }
 );
+
+router.post('/getAiImage', ootdController.getAiImage, (req, res) => {
+  console.log(req.body);
+  console.log('POST /ootd/getAiImage route hit');
+  console.log(res.locals.onlineImageUrl);
+  res.status(200).json({ image_url: res.locals.onlineImageUrl });
+});
 
 router.get('/get/:id', (req, res) => {
   console.log('GET /ootd/get/:id route hit');

@@ -3,6 +3,11 @@
   margin-top: 100px;
   overflow-x: scroll;
 
+  .new-outfit {
+    transform: scale(1.5);
+    margin: 200px;
+  }
+
   .items-container {
     margin-top: 30px;
     display: flex;
