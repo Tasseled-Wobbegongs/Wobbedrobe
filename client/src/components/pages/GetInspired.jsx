@@ -92,22 +92,30 @@ export default function GetInspired() {
   if (canGenerate) {
     return (
       <div className='get-inspired'>
-        <button onClick={generateRandomOutfit}>
-          {stage === 'generate_random_outfit'
-            ? 'Generate a random outfit from your wobbedrobe.'
-            : "Don't like it? Regenerate!"}
-        </button>
-        {stage === 'generate_ai_image' && (
+        <div className='buttons'>
           <button
             onClick={() => {
-              setFetching(true);
-              generateAiImage();
-              setStage('save_ootd');
+              generateRandomOutfit();
+              setAiImageUrl(null);
             }}
           >
-            Generate an Ai image for your new outfit.
+            {!fetching &&
+              (stage === 'generate_random_outfit'
+                ? 'Generate a random outfit from your wobbedrobe.'
+                : "Don't like it? Regenerate!")}
           </button>
-        )}
+          {stage === 'generate_ai_image' && (
+            <button
+              onClick={() => {
+                setFetching(true);
+                generateAiImage();
+                setStage('save_ootd');
+              }}
+            >
+              Generate an Ai image for your new outfit.
+            </button>
+          )}
+        </div>
         {fetching && (
           <div>
             <p>Fetching Ai image...</p>

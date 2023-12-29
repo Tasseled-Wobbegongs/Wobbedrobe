@@ -7,7 +7,7 @@ export default function UserWobbeDrobe() {
   const user = useSelector((state) => state.status.user);
   console.log(user.wardrobe);
   const page = useSelector((state) => state.status.page);
-  const [selection, setSelection] = useState(null);
+  const [selection, setSelection] = useState('all');
   if (page === 'VIEW_WOBBEDROBE')
     return (
       <div className='wobbedrobe'>
@@ -18,7 +18,7 @@ export default function UserWobbeDrobe() {
           <button onClick={() => setSelection('shoes')}>Shoes</button>
           <button onClick={() => setSelection('all')}>All</button>
         </div>
-        {selection && selection !== 'all' && (
+        {selection !== 'all' && (
           <div className='card-container'>
             {[...user.wardrobe[selection]]
               .sort((a, b) => {

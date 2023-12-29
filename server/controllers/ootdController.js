@@ -52,7 +52,9 @@ ootdController.addOOTD = (req, res, next) => {
 
 ootdController.getAiImage = (req, res, next) => {
   const outfit = req.body;
-  let prompt = 'Please generate an outfit image with the following items: ';
+  let prompt =
+    'Create an image of a person showcasing a fashionable outfit. ' +
+    'The person is wearing the following items: ';
   for (const itemType of Object.keys(outfit)) {
     const { color, category, style } = outfit[itemType];
     const material = itemType === 'shoes' ? '' : outfit[itemType].material;
