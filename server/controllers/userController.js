@@ -56,24 +56,15 @@ userController.verifyUser = async (req, res, next) => {
     const queryText =
       'SELECT user_id, username, password_hash FROM users WHERE username = $1';
       // 'SELECT user_id, username, password_hash FROM users WHERE username = claire'
+    console.log('lookout!!: ', queryText)
     const queryParams = [username];
-
-
-    // DEBUG
-    // test login data, username = claire    password = 1234
-    // const testQuery = 'SELECT user_id, username, password_hash FROM users WHERE username = claire'
-    // const testQuery = 'SELECT * FROM users WHERE username = "claire"'
-    // console.log('BEGINNING TEST QUERY')
-    // const testRow = await db.query(testQuery)
-    // console.log('TEST QUERY SUCCESSFUL', testRow)
-    // DEBUG
-    // username , password, user_id
-
+    console.log('userController.verifyUser queryParams:', queryParams)
 
     const { rows } = await db.query(queryText, queryParams);
     console.log('completed query in userController.verifyUser');
 
-    if (rows.length === 0) {
+    // TODO fix error handling
+    if(rows.length === 0) {
       return res.status(401).json({ error: 'Username not found' });
     }
 
@@ -81,10 +72,13 @@ userController.verifyUser = async (req, res, next) => {
     console.log('user!!', user)
     // compare the submitted password with the stored password hash
     const isMatch = await bcrypt.compare(password, user.password_hash);
-
+    console.log(isMatch)
     if (!isMatch) {
       return res.status(401).json({ error: 'Password is incorrect' });
     }
+
+    //storing isMatch
+    res.locals.isMatch = isMatch;
 
     // if password matches, establish a session
     // req.session.userId = user.user_id;
@@ -92,6 +86,7 @@ userController.verifyUser = async (req, res, next) => {
     // store username in res.locals to use on homepage
     res.locals.user = user.username;
     res.locals.userData = user;
+    // res.locals.userData.user_id
 
     // go to the next middleware which would be to establish a session
     return next();

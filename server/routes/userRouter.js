@@ -1,10 +1,7 @@
 const express = require('express');
-<<<<<<< HEAD
 // const userController = require('./se')
 const path = require('path');
 const mongoose = require('mongoose');
-=======
->>>>>>> dev
 const router = express.Router();
 const userController = require('../controllers/userController.js');
 const cookieController = require('../controllers/cookieController.js');
@@ -30,12 +27,9 @@ const ootdController = require('../controllers/ootdController.js');
 router.post(
   '/login',
   userController.verifyUser,
-<<<<<<< HEAD
-  // cookieController.setCookie,
-=======
-  // cookieController.setSSIDCookie,
->>>>>>> dev
-  // sessionController.isLoggedIn,
+  cookieController.setCookie,
+  cookieController.setSSIDCookie,
+  sessionController.isLoggedIn,
   wobbedrobeController.getTopsForUser,
   wobbedrobeController.getBottomsForUser,
   wobbedrobeController.getOverallsForUser,
@@ -61,8 +55,8 @@ router.post(
 router.post(
   '/signup',
   userController.createUser,
-  // cookieController.setSSIDCookie,
   // sessionController.startSession,
+  // cookieController.setSSIDCookie,
   (req, res) => {
     console.log('POST /user/signup route hit');
     console.log(process.env.PG_URI);

@@ -3,8 +3,8 @@ const cors = require('cors');
 const path = require('path');
 // const Controller = require('./controllers/wobbedrobeController.js');
 // const userController = require('./controllers/userController.js');
-// const cookieController = require('./controllers/cookieController.js');
-// const sessionController = require('./controllers/sessionController.js');
+const cookieController = require('./controllers/cookieController.js');
+const sessionController = require('./controllers/sessionController.js');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const userRouter = require('./routes/userRouter.js');
@@ -30,13 +30,8 @@ mongoose.connect(MONGO_URI, {
 
 
 app.use(cors());
-<<<<<<< HEAD
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-=======
 app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded());
->>>>>>> dev
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.use('/downloadedImages', express.static('downloadedImages'));
@@ -44,6 +39,25 @@ app.use('/downloadedImages', express.static('downloadedImages'));
 app.use('/user', userRouter);
 app.use('/wobbedrobe', wobbedrobeItemsRouter);
 app.use('/ootd', ootdRouter);
+
+// app.get('/login', (res, req) => {
+//   res.cookies('username', username, {
+//     httpOnly: true, 
+//     secure: true
+//   });
+//   res.cookies('password', password);
+//   res.send('cookie has been set')
+// });
+
+// app.get('/secret', (req, res) => {
+//   const { username, password } = req.cookies; 
+
+//   if(username && password) {
+//     res.send('Identification has been confirmed');
+//   } else {
+//     res.send('Information invalid, please try again'); 
+//   }
+// })
 
 app.get('*', (req, res) => {
   console.log('GET * route hit');
@@ -57,6 +71,7 @@ app.use('*', (req, res) => {
 
 // Global error handler
 app.use((err, req, res, next) => {
+  console.log('global err: ', err)
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error: ' + err,
     status: 500,
