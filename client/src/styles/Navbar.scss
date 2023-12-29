@@ -1,0 +1,56 @@
+@font-face{
+    font-family: 'Better Together';
+    src: url('../fonts/Better-Together-Spaced-400.ttf') format('truetype');
+}
+
+/* position navbar at the top of the page */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem 2rem;
+    background: transparent;
+    align-items: center; /* align items vertically */
+    z-index: 1000; /* ensure navbar stays on top */
+  }
+  
+  .nav-items {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    font-family: 'Better Together';
+    font-size: 1.5rem;
+    color: black;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .nav-item:hover {
+    transform: scale(1.1);
+  }
+  
+  /* additional styles to reset margins and paddings that could affect the layout */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* full height */
+    width: 100%; /* full width */
+  }
+  
+  /* ensure that the container of the navbar has no extra padding or margin */
+  .container-of-navbar {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* full width */
+    height: 100%; /* full height */
+  }
+  
