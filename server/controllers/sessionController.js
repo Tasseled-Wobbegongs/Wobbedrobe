@@ -6,9 +6,9 @@ const sessionController = {};
 sessionController.isLoggedIn = async (req, res, next) => {
     // const userId = res.locals.userData.user_id;
     // TODO: fix error handling. invoke next with error OBJECT
-    if(!req.cookies.ssid) {
-        return res.redirect('/signup');
-    }
+    // if(!req.cookies.ssid) {
+    //     return res.redirect('/signup');
+    // }
     
     const sessionId = await Session.find({ cookieId: res.cookies.ssid})
 
