@@ -8,7 +8,7 @@ import {
   requestOOTDAdd,
   requestOOTDAiImage,
 } from '../../utils/fetchRequests/outfit';
-import { userLogin } from '../../utils/reducers/statusSlice';
+import { goToPage, userLogin } from '../../utils/reducers/statusSlice';
 import { Audio } from 'react-loader-spinner';
 import '../../styles/GetInspired.scss';
 import OutfitCard from '../OutfitCard';
@@ -16,9 +16,13 @@ import OutfitCard from '../OutfitCard';
 export default function GetInspired() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.status.user);
-  const page = useSelector((state) => state.status.page);
   const wardrobe = user.wardrobe;
   const { top, bottom, overall, shoes } = wardrobe;
+
+  const canGenerate =
+    shoes.length > 0 &&
+    (overall.length > 0 || Math.min(top.length, bottom.length) > 0);
+
   const [outfit, setOutfit] = useState({
     top: null,
     bottom: null,
@@ -85,7 +89,7 @@ export default function GetInspired() {
     }
   }
 
-  if (page === 'GET_INSPIRED')
+  if (canGenerate) {
     return (
       <div className='get-inspired'>
         <button onClick={generateRandomOutfit}>
@@ -151,4 +155,17 @@ export default function GetInspired() {
         )}
       </div>
     );
+  } else {
+    return (
+      <div className='new-user'>
+        <h3>
+          It seems like you don't have enough clothes in your wobbedrobe to
+          generate a random outfit yet.
+        </h3>
+        <button onClick={() => dispatch(goToPage('ADD_TO_WOBBEDROBE'))}>
+          Add clothes to your wobbedrobe
+        </button>
+      </div>
+    );
+  }
 }
