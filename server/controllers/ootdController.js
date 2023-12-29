@@ -6,8 +6,13 @@ const path = require('path');
 const ootdController = {};
 
 ootdController.addOOTD = (req, res, next) => {
-  console.log(req.body);
-  const { user_id, shoes, top, bottom, overall } = req.body;
+  console.log('ootdController.addOOTD', req.body);
+  const { user_id, shoes, top, bottom, overall, userImageUrl, onlineImageUrl } =
+    req.body;
+
+  res.locals.userImageUrl = userImageUrl;
+  res.locals.onlineImageUrl = onlineImageUrl;
+
   let queryText = 'INSERT INTO outfits' + '(user_id, shoes_id, ';
   if (overall) {
     queryText += 'overall_id)';
@@ -46,13 +51,7 @@ ootdController.addOOTD = (req, res, next) => {
 };
 
 ootdController.getAiImage = (req, res, next) => {
-  const { userImageUrl } = req.body;
-  if (userImageUrl) {
-    res.locals.userImageUrl = userImageUrl;
-    return next();
-  }
-
-  const outfit = res.locals.outfit;
+  const outfit = req.body;
   let prompt = 'Please generate an outfit image with the following items: ';
   for (const itemType of Object.keys(outfit)) {
     const { color, category, style } = outfit[itemType];
@@ -75,6 +74,7 @@ ootdController.getAiImage = (req, res, next) => {
 };
 
 ootdController.saveImage = async (req, res, next) => {
+  console.log('ootdController.saveImage');
   try {
     let imageBuffer;
     if (res.locals.onlineImageUrl) {
@@ -183,7 +183,11 @@ ootdController.deleteOutfitById = (req, res, next) => {
   const id = req.params.id;
   db.query(`DELETE FROM outfits WHERE outfit_id = ${id} RETURNING *;`)
     .then((data) => data.rows[0])
-    .then((data) => (res.locals.deletedOutfit = data))
+    .then((data) => {
+      res.locals.deletedOutfit = data;
+      const pathToDelete = path.join(__dirname, `..${data.image_url}`);
+      fs.unlinkSync(pathToDelete);
+    })
     .then(() => next())
     .catch((err) =>
       next({
