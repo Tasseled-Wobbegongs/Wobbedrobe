@@ -32,23 +32,10 @@ export function requestOOTDUpdate(id, body) {
 }
 
 export function requestOOTDDelete(id) {
-  console.log(id);
   return fetch(`OOTD/delete/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   })
     .then((res) => res.json())
     .catch((err) => console.log('App: delete OOTD item: ERROR: ', err));
-}
-
-export function requestOOTDAiImage(body) {
-  return fetch('ootd/getAiImage', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  })
-    .then((res) => res.json())
-    .catch((err) => console.log('App: update OOTD: ERROR', err));
 }

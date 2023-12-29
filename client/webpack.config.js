@@ -1,6 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-
 const path = require('path');
 
 module.exports = {
@@ -9,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
-  mode: process.env.NODE_ENV || 'development',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -22,12 +20,13 @@ module.exports = {
           },
         },
       },
+      { test: /\.json/, use: ['json-loader'] },
       {
         test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
     ],
@@ -36,29 +35,23 @@ module.exports = {
     new HtmlWebpackPlugin({
       // generates an HTML file for your application and automatically injects all your generated bundles into this file
       title: 'Development',
-      template: './public/index.html',
-    }),
-    new CopyPlugin({
-      patterns: [{ from: 'public/images', to: 'images' }],
+      template: 'index.html',
     }),
   ],
   devServer: {
     static: {
       // match the output path
-      // directory: path.resolve(__dirname, 'build'),
-      // publicPath: '/build',
-      publicPath: '/',
-			directory: path.join(__dirname, 'dist'),
+      directory: path.resolve(__dirname, 'build'),
+      publicPath: '/build',
     },
     proxy: {
-      '/api/**': {
+      '/api': {
         // request that  start with /api wil be intercepted by the development server
         // any requests that start with '/api' on the development server will be forwarded to 'http://localhost:3000'
         target: 'http://localhost:3000',
         secure: false,
       },
     },
-    historyApiFallback: true, 
   },
   resolve: {
     extensions: ['.js', '.jsx'],

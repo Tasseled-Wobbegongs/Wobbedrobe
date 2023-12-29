@@ -2,13 +2,11 @@
 
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { goToPage, userLogin } from '../../utils/reducers/statusSlice';
+import { goToPage } from '../../utils/reducers/statusSlice';
 import categories from '../../clothesData/categories.json';
 import materials from '../../clothesData/materials.json';
 import styles from '../../clothesData/style.json';
 import { requestWobbedrobeAdd } from '../../utils/fetchRequests/wobbedrobe';
-import { requestGetUser } from '../../utils/fetchRequests/user';
-import '../../styles/AddToWobbeDrobe.scss';
 
 export default function AddToWobbeDrobe() {
   const page = useSelector((state) => state.status.page);
@@ -17,12 +15,12 @@ export default function AddToWobbeDrobe() {
   const [selection, setSelection] = useState(null);
   if (page === 'ADD_TO_WOBBEDROBE')
     return (
-      <div className='add-to-wobbedrobe'>
+      <div>
         {!selection && (
-          <div className='itemType-buttons'>
-            <button onClick={() => setSelection('tops')}>Top</button>
-            <button onClick={() => setSelection('bottoms')}>Bottoms</button>
-            <button onClick={() => setSelection('overalls')}>Overalls</button>
+          <div>
+            <button onClick={() => setSelection('top')}>Top</button>
+            <button onClick={() => setSelection('bottom')}>Bottoms</button>
+            <button onClick={() => setSelection('overall')}>Overalls</button>
             <button onClick={() => setSelection('shoes')}>Shoes</button>
           </div>
         )}
@@ -40,12 +38,10 @@ export default function AddToWobbeDrobe() {
                 };
                 if (selection !== 'shoes')
                   body.material = e.target.material.value;
-                console.log(body);
 
-                if (process.env.NODE_ENV === 'production') {
+                console.log(body);
+                if (process.env.NODE_ENV === 'build') {
                   await requestWobbedrobeAdd(selection, body);
-                  const updatedUser = await requestGetUser(user.user_id);
-                  dispatch(userLogin(updatedUser));
                 }
                 setSelection(null);
                 dispatch(goToPage('HOME'));

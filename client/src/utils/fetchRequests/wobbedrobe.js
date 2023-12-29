@@ -1,5 +1,5 @@
-export function requestWobbedrobeAdd(itemType, body) {
-  return fetch(`wobbedrobe/add/${itemType}`, {
+export function requestWobbedrobeAdd(category, body) {
+  return fetch(`wobbedrobe/add/${category}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -10,19 +10,19 @@ export function requestWobbedrobeAdd(itemType, body) {
     .catch((err) => console.log('App: add to wobbedrobe: ERROR', err));
 }
 
-export function requestWobbedrobeGet(itemType) {
-  return fetch(`wobbedrobe/get/${itemType}`, {
+export function requestWobbedrobeGet(category) {
+  return fetch(`wobbedrobe/get/${category}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   })
     .then((res) => res.json())
     .catch((err) =>
-      console.log('App: reading wobbedrobe ', itemType, ': ERROR: ', err)
+      console.log('App: reading wobbedrobe ', category, ': ERROR: ', err)
     );
 }
 
-export function requestWobbedrobeUpdate(itemType, id, body) {
-  return fetch(`wobbedrobe/update/${itemType}/${id}`, {
+export function requestWobbedrobeUpdate(category, id, body) {
+  return fetch(`wobbedrobe/update/${category}/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,22 +33,11 @@ export function requestWobbedrobeUpdate(itemType, id, body) {
     .catch((err) => console.log('App: update wobbedrobe: ERROR', err));
 }
 
-export function requestWobbedrobeDelete(itemType, id) {
-  return fetch(`wobbedrobe/delete/${itemType}/${id}`, {
+export function requestWobbedrobeDelete(category, id) {
+  return fetch(`wobbedrobe/delete/${category}/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   })
     .then((res) => res.json())
     .catch((err) => console.log('App: delete wobbedrobe item: ERROR: ', err));
-}
-
-export function requestWobbedrobeGetById(itemType, id) {
-  return fetch(`wobbedrobe/getById/${itemType}/${id}`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  })
-    .then((res) => res.json())
-    .catch((err) =>
-      console.log('App: get wobbedrobe item by id: ERROR: ', err)
-    );
 }
