@@ -3,7 +3,10 @@ import defaultUsers from '../../fakeData/user.json';
 import React, { useState } from 'react';
 import { goToPage, userLogin } from '../../utils/reducers/statusSlice';
 import '../../styles/Login.scss';
-import { requestUserLogin } from '../../utils/fetchRequests/user';
+import {
+  requestUserLogin,
+  requestUserSignup,
+} from '../../utils/fetchRequests/user';
 
 // Page 2 & 3
 export default function LogInSignUpBox() {
@@ -23,33 +26,48 @@ export default function LogInSignUpBox() {
     e.preventDefault();
     const username = e.target.username.value;
     const password = e.target.password.value;
-
-    if (process.env.NODE_ENV === 'development') {
-      if (!Object.keys(defaultUsers).includes(username)) {
-        setMessage('Username not found, please sign up.');
-        setShowSignUp(true);
-      } else {
-        const user = defaultUsers[username];
-        if (password !== user.password) {
-          setMessage('Password incorrect');
-          setShowSignUp(true); // show sign up option if password is incorrect
+    if (!isSignUp) {
+      if (process.env.NODE_ENV === 'development') {
+        if (!Object.keys(defaultUsers).includes(username)) {
+          setMessage('Username not found, please sign up.');
+          setShowSignUp(true);
         } else {
-          setMessage('Login succesful');
-          dispatch(userLogin({ ...user, username }));
+          const user = defaultUsers[username];
+          if (password !== user.password) {
+            setMessage('Password incorrect');
+            setShowSignUp(true); // show sign up option if password is incorrect
+          } else {
+            setMessage('Login succesful');
+            dispatch(userLogin({ ...user, username }));
+            setTimeout(() => dispatch(goToPage('HOME')), 1000);
+          }
+        }
+      } else if (process.env.NODE_ENV === 'production') {
+        const user = await requestUserLogin({ username, password });
+        console.log('user is', user);
+        if (!user.error) {
+          setMessage('Login successfully');
+          dispatch(userLogin(user));
           setTimeout(() => dispatch(goToPage('HOME')), 1000);
+        } else {
+          setMessage(
+            'Failed to log in. Error: ' + user.error + '. Please try again.'
+          );
         }
       }
-    } else if (process.env.NODE_ENV === 'production') {
-      const user = await requestUserLogin({ username, password });
-      console.log('user is', user);
-      if (user) {
-        setMessage('Login successful');
-        dispatch(userLogin(user));
-        setTimeout(() => dispatch(goToPage('HOME')), 1000);
-      } else {
-        setMessage(
-          'Password incorrect or username not found. Please try again.'
-        );
+    } else {
+      if (process.env.NODE_ENV === 'production') {
+        const user = await requestUserSignup({ username, password });
+        console.log('user is', user);
+        if (!user.error) {
+          setMessage('Sign up successfully');
+          dispatch(userLogin(user));
+          setTimeout(() => dispatch(goToPage('HOME')), 1000);
+        } else {
+          setMessage(
+            'Failed to sign up, error: ' + user.error + '. Please try again.'
+          );
+        }
       }
     }
 

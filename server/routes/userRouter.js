@@ -37,8 +37,8 @@ router.post(
 router.post(
   '/signup',
   userController.createUser,
-  cookieController.setSSIDCookie,
-  sessionController.startSession,
+  // cookieController.setSSIDCookie,
+  // sessionController.startSession,
   (req, res) => {
     console.log('POST /user/signup route hit');
     const { user_id, username } = res.locals.userData;
