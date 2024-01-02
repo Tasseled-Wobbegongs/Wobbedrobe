@@ -1,43 +1,65 @@
-.home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .home-welcome {
-    position: absolute;
-    top: 5%; // value to position below the navbar
-    width: 100%;
-    text-align: center;
-    h1 {
-      font-family: 'Pinyon Script', cursive;
-      font-size: 5rem;
-    }
-  }
-  
-  .home-images {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2vw; 
-    position: absolute;
-    width: 100%;
-    top: 50%; // center on the page vertically
-    transform: translateY(-50%);
-    
-    img {
-      width: 20vw; // each image will take up 20% of the viewport width
-      height: auto; // maintain the aspect ratio
-      object-fit: cover; // cover the area without stretching the image
-      border: 5px solid white;
-    }
-  }
+body, html {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  height: 100%; /* ensures that the background covers the full content */
+}
 
-  // adjustments for very large screens
-  @media (min-width: 1800px) {
-    .home-images img {
-      width: auto;
-      max-width: 400px; // larger maximum width for larger screens
-    }
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; /* horizontally center the content */
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.home-welcome {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 1.5rem;
+}
+
+.home-page .landingpage {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-wrap: wrap; /* allow images to wrap if necessary */
+  width: 100%; /* full width to contain the images */
+  padding: 4vh 0; /* vertical padding */
+  background: transparent;
+}
+
+.home-page .landingpage-photos {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 2vw; 
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.home-page .landingpage-photos img {
+  width: 400px; 
+  height: 500px; 
+  object-fit: cover; /* crops the images to fill the frame */
+  border: 5px solid white; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow for depth behind images */
+}
+
+.home-page button {
+  font-family: Alta;
+}
+
+@media (max-width: 768px) {
+  .home-page .landingpage-photos img {
+    width: 80vw; 
+    height: auto; 
   }
+}
+
+@media (min-width: 1800px) {
+  .home-page .landingpage-photos img {
+    max-width: 400px;
+  }
+}
