@@ -2,6 +2,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { goToPage } from '../../utils/reducers/statusSlice';
+import '../../styles/Home.scss'
 
 
 export default function Home() {
@@ -14,7 +15,11 @@ export default function Home() {
   return (
 
     <div className='home-page'>
-      <h1>Welcome back to your Wobbedrobe, {user.username}!</h1>
+      <div className="home-container">
+        <div className="home-welcome">
+          <h1>Welcome back to your Wobbedrobe, {user.username}!</h1>
+        </div>
+      </div>
       {shuffledOutfitImages.length >= 3 && (
         <p>Here are some of your fabulous outfits.</p>
       )}

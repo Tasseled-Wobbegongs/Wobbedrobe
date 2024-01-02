@@ -1,15 +1,12 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const db = require('./db.js');
+const sessionSchema = new Schema({
+  // userId: String, 
+  cookieId: { type: String || Number, required: true, unique: true },
+  createdAt: { type: Date, expires: 7, default: Date.now }
+});
 
-async function isValidSession(sessionToken) {
-    
-    try {
-        const result = db.query('SELECT * FROM sessions WHERE sessions = $1 AND expires_at > NOW() [created_at]');
-        
-        return result.rows.length > 0;  
-    } catch {
-        console.error('Error:', error); 
-    }
+const Session = mongoose.model('Session', sessionSchema);
 
-
-};
+module.exports = Session;
