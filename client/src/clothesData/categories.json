@@ -8,8 +8,16 @@
     "hoodie",
     "polo",
     "bodysuit",
-    "shirt"
+    "shirt",
+    "jacket"
   ],
-  "bottoms": ["jeans", "trousers", "leggings", "sweatpants", "cargopants"],
+  "bottoms": [
+    "jeans",
+    "trousers",
+    "leggings",
+    "sweatpants",
+    "cargopants",
+    "skirt"
+  ],
   "overalls": ["dress", "onesie", "jumpsuit"]
 }

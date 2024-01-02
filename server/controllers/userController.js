@@ -24,12 +24,13 @@ userController.createUser = async (req, res, next) => {
 
     // store user_id in session
     // req.session object is used to store data that you want to keep across requests made by the same user
-    req.session.userId = rows[0].user_id;
-    console.log(
-      'this is req.session.userId in userController.createUser',
-      req.session.userId
-    );
+    // req.session.userId = rows[0].user_id;
+    // console.log(
+    //   'this is req.session.userId in userController.createUser',
+    //   req.session.userId
+    // );
     // store username in res locals
+    res.locals.userData = rows[0];
     res.locals.user = rows[0].username;
     // go to next middleware which would be to create session with userId
     return next();

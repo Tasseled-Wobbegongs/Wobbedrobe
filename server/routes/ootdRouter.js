@@ -6,18 +6,28 @@ const ootdController = require('../controllers/ootdController.js');
 router.post(
   '/add',
   ootdController.addOOTD,
-  ootdController.getAiImage,
-  ootdController.saveAiImage,
+  ootdController.saveImage,
   ootdController.updateNewOutfitWithImageUrl,
   (req, res) => {
+    console.log(req.body);
     console.log('POST /ootd/add/ route hit');
-    res.status(200).json({ newOutfit: res.locals.newOutfit });
+    console.log(res.locals.newOutfit);
+    res.status(200).json(res.locals.newOutfit);
   }
 );
 
+router.post('/getAiImage', ootdController.getAiImage, (req, res) => {
+  console.log(req.body);
+  console.log('POST /ootd/getAiImage route hit');
+  console.log(res.locals.onlineImageUrl);
+  res.status(200).json({ image_url: res.locals.onlineImageUrl });
+});
+
 router.get('/get/:id', (req, res) => {
   console.log('GET /ootd/get/:id route hit');
-  console.log(req.body);
+  // console.log(req.body);
+  //want to use req.params to retrieve data from the URL params
+  console.log(req.params.id);
   res.status(200).json({});
 });
 

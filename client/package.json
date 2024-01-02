@@ -5,7 +5,7 @@
   "main": "/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development react-scripts start",
+    "start": "react-scripts start",
     "build": "cross-env NODE_ENV=production webpack"
   },
   "keywords": [],
@@ -20,7 +20,7 @@
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-loader-spinner": "^6.1.0",
+    "react-loader-spinner": "^6.1.6",
     "react-redux": "^9.0.2",
     "react-scripts": "^5.0.1",
     "sass": "^1.69.5"

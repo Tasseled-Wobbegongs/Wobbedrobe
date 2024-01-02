@@ -6,7 +6,13 @@ const path = require('path');
 const ootdController = {};
 
 ootdController.addOOTD = (req, res, next) => {
-  const { user_id, shoes, top, bottom, overall } = req.body;
+  console.log('ootdController.addOOTD', req.body);
+  const { user_id, shoes, top, bottom, overall, userImageUrl, onlineImageUrl } =
+    req.body;
+
+  res.locals.userImageUrl = userImageUrl;
+  res.locals.onlineImageUrl = onlineImageUrl;
+
   let queryText = 'INSERT INTO outfits' + '(user_id, shoes_id, ';
   if (overall) {
     queryText += 'overall_id)';
@@ -45,8 +51,10 @@ ootdController.addOOTD = (req, res, next) => {
 };
 
 ootdController.getAiImage = (req, res, next) => {
-  const outfit = res.locals.outfit;
-  let prompt = 'Please generate an outfit image with the following items: ';
+  const outfit = req.body;
+  let prompt =
+    'Create an image of a person showcasing a fashionable outfit. ' +
+    'The person is wearing the following items: ';
   for (const itemType of Object.keys(outfit)) {
     const { color, category, style } = outfit[itemType];
     const material = itemType === 'shoes' ? '' : outfit[itemType].material;
@@ -67,13 +75,28 @@ ootdController.getAiImage = (req, res, next) => {
     );
 };
 
-ootdController.saveAiImage = async (req, res, next) => {
+ootdController.saveImage = async (req, res, next) => {
+  console.log('ootdController.saveImage');
   try {
-    const onlineImageUrl = res.locals.onlineImageUrl;
-    console.log(onlineImageUrl);
-    const imageResponse = await fetch(onlineImageUrl);
-    const arrayBuffer = await imageResponse.arrayBuffer();
-    const imageBuffer = Buffer.from(arrayBuffer);
+    let imageBuffer;
+    if (res.locals.onlineImageUrl) {
+      const onlineImageUrl = res.locals.onlineImageUrl;
+      console.log(onlineImageUrl);
+      const imageResponse = await fetch(onlineImageUrl);
+      const arrayBuffer = await imageResponse.arrayBuffer();
+      imageBuffer = Buffer.from(arrayBuffer);
+    } else if (res.locals.userImageUrl) {
+      const userImageUrl = req.body.userImageUrl;
+      const base64Data = userImageUrl.split(',')[1];
+      imageBuffer = Buffer.from(base64Data, 'base64');
+    } else {
+      return next({
+        log: 'Express error handler caught ootdController.saveOnlineImage middleware error',
+        message: {
+          err: 'Unknown error occurred when saving ootd image for user, Err ',
+        },
+      });
+    }
 
     const targetDirectory = path.join(__dirname, '../downloadedImages');
     const imageName = `ootd${Date.now()}.png`;
@@ -85,7 +108,9 @@ ootdController.saveAiImage = async (req, res, next) => {
     return next();
   } catch (err) {
     return next({
-      log: 'Express error handler caught ootdController.saveAiImage middleware error',
+      log:
+        'Express error handler caught ootdController.saveOnlineImage middleware error:' +
+        err,
       message: {
         err: 'An error occurred when saving ootd image for user, Err: ' + err,
       },
@@ -160,7 +185,11 @@ ootdController.deleteOutfitById = (req, res, next) => {
   const id = req.params.id;
   db.query(`DELETE FROM outfits WHERE outfit_id = ${id} RETURNING *;`)
     .then((data) => data.rows[0])
-    .then((data) => (res.locals.deletedOutfit = data))
+    .then((data) => {
+      res.locals.deletedOutfit = data;
+      const pathToDelete = path.join(__dirname, `..${data.image_url}`);
+      fs.unlinkSync(pathToDelete);
+    })
     .then(() => next())
     .catch((err) =>
       next({

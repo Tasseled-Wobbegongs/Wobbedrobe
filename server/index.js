@@ -17,7 +17,7 @@ const ootdRouter = require('./routes/ootdRouter.js');
 const wobbedrobeItemsRouter = require('./routes/wobbedrobeItemsRouter.js');
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, '../client/build')));
@@ -40,13 +40,13 @@ app.use('*', (req, res) => {
 // Global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
+    log: 'Express error handler caught unknown middleware error: ' + err,
     status: 500,
     message: { err: 'An error occurred' },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
-  return res.status(errorObj.status).json(errorObj.message);
+  return res.status(errorObj.status).json({ err: errorObj.message });
 });
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));

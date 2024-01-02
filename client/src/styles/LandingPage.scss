@@ -1,53 +1,52 @@
 .landingpage {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start; // align children at the start of the main axis.
-    min-height: 100vh;
-    width: 100vw;
-    background: no-repeat center/cover url('../images/page-background.png');
-    position: relative;
-    overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; // align children at the start of the main axis.
+  min-height: 100vh;
+  width: 100vw;
+  background: no-repeat center/cover url('../images/page-background.png');
+  position: relative;
+  overflow: hidden;
+}
+
+.landingpage-logo {
+  position: absolute;
+  left: 0.5vw;
+  top: 50%;
+  transform: translateY(-50%); // center vertically
+  img.wobbedrobe-logo {
+    height: auto;
+    width: 15vw; // control the width relative to the viewport width
   }
-  
-  .landingpage-logo {
-    position: absolute;
-    left: .5vw;
-    top: 50%;
-    transform: translateY(-50%); // center vertically
-    img.wobbedrobe-logo {
-      height: auto;
-      width: 15vw; // control the width relative to the viewport width
-    }
+}
+
+.landingpage-photos {
+  margin: 0 auto; // center container for photos
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw; // spacing between photos based on viewport width
+  margin-left: 20vw;
+
+  img {
+    object-fit: cover;
+    border: 5px solid white;
   }
-  
-  .landingpage-photos {
-    margin: 0 auto; // center container for photos
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2vw; // spacing between photos based on viewport width
-    margin-left: 20vw;
-  
-    img {
-      object-fit: cover;
-      border: 5px solid white;
-    }
 
-    .photo1 {
-        width: 30vw; // each image will take up whatever width of the viewport width
-        height: auto;
-    }
+  .photo1 {
+    width: 30vw; // each image will take up whatever width of the viewport width
+    height: auto;
+  }
 
-    .photo2 {
-        width: 25vw;
-        height: auto;
-    }
+  .photo2 {
+    width: 25vw;
+    height: auto;
+  }
 
-    .photo3 {
-        width: 25vw;
-        height: auto;
-    }
+  .photo3 {
+    width: 25vw;
+    height: auto;
   }
   
   .landingpage-signin {
@@ -70,3 +69,19 @@
       }
     }
   }
+}
+
+.home-page {
+  margin-top: 100px;
+
+  .landingpage {
+    min-height: 80vh;
+  }
+}
+
+.new-user {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
