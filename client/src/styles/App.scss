@@ -1,24 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Pinyon+Script&display=swap');
 
 // font-family: 'Cormorant Garamond', serif;
+// font-family: 'Pinyon Script', cursive;
 
 body {
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background-image: url('../images/backgroundwithlines.png');
-  background-size: cover; /* or contain, or specific dimensions */
-  background-repeat: repeat;
-  background-position: center;
-  background-size: 100vw 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/backgroundwithlines.png');
+    background-size: cover; /* or contain, or specific dimensions */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100vw 100vh;
+    overflow: hidden; // hides scrollbar
 }
-
-// .home-page, .add-to-wobbedrobe-page, .userwobbedrobe-page, .addtoootd-page, .getinspired-page {
-//     margin: 0;
-//     padding: 0;
-//     background-image: url('../../docs/assets/images/backgroundwithlines.png');
-//     background-size: cover; /* or contain, or specific dimensions */
-//     background-repeat: no-repeat;
-//     background-position: center;
-//     background-size: 100vw 100vh;
-// }

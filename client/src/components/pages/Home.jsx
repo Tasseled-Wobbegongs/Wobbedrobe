@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { goToPage } from '../../utils/reducers/statusSlice';
 
+
 export default function Home() {
   const user = useSelector((state) => state.status.user);
   const shuffledOutfitImages = user.outfit
@@ -11,6 +12,7 @@ export default function Home() {
   console.log(shuffledOutfitImages);
   const dispatch = useDispatch();
   return (
+
     <div className='home-page'>
       <h1>Welcome back to your Wobbedrobe, {user.username}!</h1>
       {shuffledOutfitImages.length >= 3 && (

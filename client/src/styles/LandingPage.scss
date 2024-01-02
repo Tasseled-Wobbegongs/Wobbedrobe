@@ -48,25 +48,25 @@
     width: 25vw;
     height: auto;
   }
-}
-
-.landingpage-signin {
-  position: absolute;
-  top: 1.5vh;
-  right: 1.5vw; // Use viewport width to determine distance from the right
-
-  button {
-    padding: 0.6rem 1rem;
-    font-family: 'Cormorant Garamond', serif;
-    color: #423f32;
-    font-size: 0.8vw;
-    background: none;
-    border: 1px solid #423f32;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.05);
+  
+  .landingpage-signin {
+    position: absolute;
+    top: 1.5vh;
+    right: 1.5vw; // use viewport width to determine distance from the right
+  
+    button {
+      padding: 0.6rem 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      color: #423F32;
+      font-size: .8vw;
+      background: none;
+      border: 1px solid #423F32;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 }
