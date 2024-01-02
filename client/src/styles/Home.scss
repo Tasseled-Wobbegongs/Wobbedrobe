@@ -1,0 +1,43 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home-welcome {
+    position: absolute;
+    top: 5%; // value to position below the navbar
+    width: 100%;
+    text-align: center;
+    h1 {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 5rem;
+    }
+  }
+  
+  .home-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw; 
+    position: absolute;
+    width: 100%;
+    top: 50%; // center on the page vertically
+    transform: translateY(-50%);
+    
+    img {
+      width: 20vw; // each image will take up 20% of the viewport width
+      height: auto; // maintain the aspect ratio
+      object-fit: cover; // cover the area without stretching the image
+      border: 5px solid white;
+    }
+  }
+
+  // adjustments for very large screens
+  @media (min-width: 1800px) {
+    .home-images img {
+      width: auto;
+      max-width: 400px; // larger maximum width for larger screens
+    }
+  }
